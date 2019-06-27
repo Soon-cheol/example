@@ -3,12 +3,13 @@ import data from './data'
 
 // console.log(data)
 const dataNum = data.length;
-const dataKeyNum = data[0].length;
+const dataKeyNum = Object.keys(data[0]).length;
 const thead = document.querySelector(".table thead");
 const tbody = document.querySelector(".table tbody");
 const theadAddTr = document.createElement("tr");
 
 thead.appendChild(theadAddTr);
+console.log(dataKeyNum);
 for(let i = 0; i < dataKeyNum; i++){
   const theadtr = document.querySelector(".table thead tr");
   const theadAddTd = document.createElement("td");
