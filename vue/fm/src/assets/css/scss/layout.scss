@@ -3,6 +3,7 @@
 Author : 최순철
 Create date : 2019-08-20
 -------------------------------------------------*/
+@import "./position";
 body{
   width:100%;
   text-align: center;
@@ -35,47 +36,6 @@ body{
           g{
             fill: #fff
           }
-        }
-      }
-      $total: 11;
-      // position433 : Start
-      @for $i from 1 to $total {
-        @if(#{$i} == 1){
-          top: 120px;
-          left: 70px;
-        }@else if(#{$i} == 2){
-          top: 120px;
-          left: 228px;
-        }@else if(#{$i} == 3){
-          top: 120px;
-          right: 70px;
-        }@else if(#{$i} == 4){
-          top: 420px;
-          left: 70px;
-        }@else if(#{$i} == 5){
-          top: 420px;
-          left: 235px;
-        }@else if(#{$i} == 6){
-          top: 420px;
-          right: 70px;
-        }@else if(#{$i} == 7){
-          top: 690px;
-          left: 30px;
-        }@else if(#{$i} == 8){
-          top: 690px;
-          left: 160px;
-        }@else if(#{$i} == 9){
-          top: 690px;
-          right: 160px;
-        }@else if(#{$i} == 10){
-          top: 690px;
-          right: 30px;
-        }@else if(#{$i} == 11){
-          bottom: 34px;
-          left: 228px;
-        }
-        .player:nth-child(#{$i}){
-          
         }
       }
     }
