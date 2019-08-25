@@ -1,5 +1,7 @@
 <template>
   <div class="player">
+    <span class="name">{{name}}</span>
+    <span class="number">{{number}}</span>
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="90" height="90" viewBox="0 0 1280.000000 1167.000000"
  preserveAspectRatio="xMidYMid meet">
@@ -19,3 +21,16 @@ m372 -510 c80 -34 295 -106 415 -138 361 -97 678 -139 1098 -148 490 -10 883
 </svg>
   </div>
 </template>
+<script>
+export default {
+  data : function() {
+        return {
+            number: this.propsNumber,
+            name: this.propsName
+        }
+    },
+  props: [
+    'propsNumber', 'propsName'
+  ]
+}
+</script>

@@ -1,43 +1,54 @@
 @charset "utf-8";
+
 /*-------------------------------------------------
 Author : 최순철
 Create date : 2019-08-20
 -------------------------------------------------*/
+
 @import "./position";
-body{
-  width:100%;
-  text-align: center;
-  background: #3a3a3a;
-  #app {
-    display: table;
-    width:1280px;
-    margin:0 auto;
-    & > div{
-      display: table-cell;
-    }
-    .info{
-      width:730px;
-      padding:20px 60px 20px 20px;
-      background: #5a5a5a;
-      text-align: left;
-      color: #fff;
-    }
-    .ground{
-      position: relative;
-      width:550px;
-      height:917px;
-      background:url('/src/assets/images/bg_ground.jpg') no-repeat 0 0;
-      background-size: 100%;
-      .player{
-        position: absolute;
-        svg{
-          width: 90px;
-          height: 90px;
-          g{
-            fill: #fff
-          }
+body {
+    width: 100%;
+    text-align: center;
+    background: #3a3a3a;
+    #app {
+        display: table;
+        width: 1280px;
+        margin: 0 auto;
+        &>div {
+            display: table-cell;
         }
-      }
+        .info {
+            width: 730px;
+            padding: 20px 60px 20px 20px;
+            background: #5a5a5a;
+            text-align: left;
+            color: #fff;
+        }
+        .ground {
+            position: relative;
+            width: 550px;
+            height: 917px;
+            background: url('/src/assets/images/bg_ground.jpg') no-repeat 0 0;
+            background-size: 100%;
+            .player {
+                position: absolute;
+                svg {
+                    width: 90px;
+                    height: 90px;
+                    g {
+                        fill: #ff1b1b
+                    }
+                }
+                .number {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    font-size: 36px;
+                    font-weight: 600;
+                    text-align: center;
+                    color: #fff
+                }
+            }
+        }
     }
-  }
 }
