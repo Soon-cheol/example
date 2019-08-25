@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Player v-for="p in playerlist" :propsNumber="p.number" :propsName="p.name" :key="p.id" />
+        <Player v-for="p in playerlist" :propsNumber="p.number" :propsName="p.uname" :key="p.id" />
     </div>
 </template>
 <script>
