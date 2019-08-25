@@ -1,7 +1,8 @@
 const playerlist = [{
         id: 1,
         number: 11,
-        name: 'Neymar',
+        name: 'Marco Reus',
+        name: 'Reus',
         position: 'fw',
         nation: 'korea',
         age: 20,
@@ -10,8 +11,9 @@ const playerlist = [{
     },
     {
         id: 2,
-        number: 4,
-        name: 'test',
+        number: 27,
+        name: 'Mario Gomez',
+        name: 'Gomez',
         position: 'fw',
         nation: 'korea',
         age: 20,
@@ -20,8 +22,9 @@ const playerlist = [{
     },
     {
         id: 3,
-        number: 4,
-        name: 'test',
+        number: 10,
+        name: 'Lukas Podolski',
+        name: 'Podolski',
         position: 'fw',
         nation: 'korea',
         age: 20,

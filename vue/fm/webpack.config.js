@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: './src/main.js',
@@ -8,7 +9,14 @@ module.exports = {
         rules: [
             { test: /\.js$/, use: 'babel-loader' },
             { test: /\.vue$/, use: 'vue-loader' },
-            { test: /\.css$/, use: ['vue-style-loader', 'css-loader'] },
+            {
+                test: /\.css$/,
+                use: [
+                    'vue-style-loader',
+                    // MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ],
+            },
         ]
     },
     devServer: {
@@ -23,6 +31,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
+        // new MiniCssExtractPlugin({
+        //     // Options similar to the same options in webpackOptions.output
+        //     // both options are optional
+        //     filename: "main.css",
+        //     chunkFilename: "[id].css"
+        // }),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
