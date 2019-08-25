@@ -1,28 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 
 module.exports = {
     entry: './src/main.js',
     module: {
-        rules: [{
-                test: /\.js$/,
-                use: 'babel-loader'
-            },
-            {
-                test: /\.vue$/,
-                use: 'vue-loader'
-            },
-            {
-                test: /\.css/,
-                use: [
-                    'vue-style-loader',
-                    'css-hot-loader',
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                ],
-            },
+        rules: [
+            { test: /\.js$/, use: 'babel-loader' },
+            { test: /\.vue$/, use: 'vue-loader' },
+            { test: /\.css$/, use: ['vue-style-loader', 'css-loader'] },
         ]
     },
     devServer: {
@@ -37,11 +23,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new VueLoaderPlugin(), ,
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
+        new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
