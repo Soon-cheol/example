@@ -32,6 +32,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "jslint": "^0.12.1"
+        "jslint": "^0.12.1",
+        "mini-css-extract-plugin": "^0.8.0"
     }
 }

@@ -10,24 +10,24 @@ Create date : 2019-08-20
     font-family: 'NotoSansKR';
     font-style: normal;
     font-weight: 200;
-    src: url('../fonts/NotoSansKR/Futura_Bold_font.eot');
-    src: local("?"), url('../fonts/NotoSansKR/Futura_Bold_font.woff') format('woff'), // url('../fonts/NotoSansKR/Futura_Bold_font.otf') format('opentype');
+    src: url('/src/assets/fonts/NotoSansKR/Futura_Bold_font.eot');
+    src: local("?"), url('/src/assets/fonts/NotoSansKR/Futura_Bold_font.woff') format('woff'), // url('/src/assets/fonts/NotoSansKR/Futura_Bold_font.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'NotoSansKR';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/NotoSansKR/Futura_Medium.eot');
-    src: local("?"), url('../fonts/NotoSansKR/Futura_Medium.woff') format('woff'), // url('../fonts/NotoSansKR/Futura_Medium.otf') format('opentype');
+    src: url('/src/assets/fonts/NotoSansKR/Futura_Medium.eot');
+    src: local("?"), url('/src/assets/fonts/NotoSansKR/Futura_Medium.woff') format('woff'), // url('/src/assets/fonts/NotoSansKR/Futura_Medium.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'NotoSansKR';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/NotoSansKR/NotoSansKR-Bold.eot');
-    src: local("?"), url('../fonts/NotoSansKR/NotoSansKR-Bold.woff') format('woff'), // url('../fonts/NotoSansKR/NotoSansKR-Bold.otf') format('opentype');
+    src: url('/src/assets/fonts/NotoSansKR/NotoSansKR-Bold.eot');
+    src: local("?"), url('/src/assets/fonts/NotoSansKR/NotoSansKR-Bold.woff') format('woff'), // url('/src/assets/fonts/NotoSansKR/NotoSansKR-Bold.otf') format('opentype');
 }
 
 // Futura
@@ -35,24 +35,24 @@ Create date : 2019-08-20
     font-family: 'Futura';
     font-style: normal;
     font-weight: 200;
-    src: url('../fonts/din/din-light.eot');
-    src: local("?"), url('../fonts/din/din-light.woff') format('woff'), // url('../fonts/din/din-light.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-light.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-light.woff') format('woff'), // url('/src/assets/fonts/din/din-light.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Futura';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/din/din-medium.eot');
-    src: local("?"), url('../fonts/din/din-medium.woff') format('woff'), // url('../fonts/din/din-medium.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-medium.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-medium.woff') format('woff'), // url('/src/assets/fonts/din/din-medium.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Futura';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/din/din-bold.eot');
-    src: local("?"), url('../fonts/din/din-bold.woff') format('woff'), // url('../fonts/din/din-bold.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-bold.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-bold.woff') format('woff'), // url('/src/assets/fonts/din/din-bold.otf') format('opentype');
 }
 
 // Din
@@ -60,24 +60,24 @@ Create date : 2019-08-20
     font-family: 'Din';
     font-style: normal;
     font-weight: 200;
-    src: url('../fonts/din/din-light.eot');
-    src: local("?"), url('../fonts/din/din-light.woff') format('woff'), // url('../fonts/din/din-light.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-light.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-light.woff') format('woff'), // url('/src/assets/fonts/din/din-light.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Din';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/din/din-medium.eot');
-    src: local("?"), url('../fonts/din/din-medium.woff') format('woff'), // url('../fonts/din/din-medium.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-medium.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-medium.woff') format('woff'), // url('/src/assets/fonts/din/din-medium.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Din';
     font-style: normal;
     font-weight: 600;
-    src: url('../fonts/din/din-bold.eot');
-    src: local("?"), url('../fonts/din/din-bold.woff') format('woff'), // url('../fonts/din/din-bold.otf') format('opentype');
+    src: url('/src/assets/fonts/din/din-bold.eot');
+    src: local("?"), url('/src/assets/fonts/din/din-bold.woff') format('woff'), // url('/src/assets/fonts/din/din-bold.otf') format('opentype');
 }
 
 $mainFont :'Din';

@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
-Vue.config.productionTip = false
+
+import './assets/css/reset.css';
+import './assets/css/layout.css';
+Vue.config.productionTip = false;
 
 new Vue({
     el: '#app',
