@@ -28,12 +28,9 @@ module.exports = {
             template: './src/index.html'
         }),
         // new MiniCssExtractPlugin({
-        //     // Options similar to the same options in webpackOptions.output
-        //     // both options are optional
-        //     filename: "main.css",
-        //     chunkFilename: "[id].css"
+        //     filename: "main.css"
         // }),
         new VueLoaderPlugin(),
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
 };

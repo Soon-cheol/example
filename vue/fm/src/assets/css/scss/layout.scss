@@ -17,12 +17,15 @@ body {
         &>div {
             display: table-cell;
         }
-        .info {
+        .infomation {
             width: 730px;
             padding: 20px 60px 20px 20px;
             background: #5a5a5a;
             text-align: left;
             color: #fff;
+            .name {
+                font-size: 30px
+            }
         }
         .ground {
             position: relative;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="info">
+    <div class="infomation">
       <Infomation />
     </div>
     <div class="ground position433">

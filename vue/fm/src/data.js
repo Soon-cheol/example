@@ -8,7 +8,7 @@ const playerlist = [
     //     nation: 'germany',
     //     age: 20,
     //     height: 180,
-    //     foot: 'Right'
+    //     foot: '오른발'
     // },
     // {
     //     id: 2,
@@ -19,7 +19,7 @@ const playerlist = [
     //     nation: 'germany',
     //     age: 20,
     //     height: 180,
-    //     foot: 'Right'
+    //     foot: '오른발'
     // },
     // {
     //     id: 3,
@@ -30,128 +30,139 @@ const playerlist = [
     //     nation: 'germany',
     //     age: 20,
     //     height: 180,
-    //     foot: 'Right'
+    //     foot: '오른발'
     // },
     {
-        id: 1,
         number: 8,
         name: 'Mesut Ozil',
         uname: 'Ozil',
-        position: 'fw',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '아스날 FC',
+        position: 'MF 미드필더',
+        nation: '독일',
+        age: 32,
+        height: '180cm',
+        weight: '76kg',
+        foot: '왼발'
     },
     {
-        id: 2,
         number: 11,
         name: 'Miroslav Klose',
         uname: 'Klose',
-        position: 'st',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '-',
+        position: 'FW 공격수',
+        nation: '독일',
+        age: 42,
+        height: '182cm',
+        weight: '81kg',
+        foot: '오른발'
     },
     {
-        id: 3,
         number: 13,
         name: 'Thomas Muller',
         uname: 'Muller',
-        position: 'fw',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: 'FC 바이에른 뮌헨',
+        position: 'FW 공격수',
+        nation: '독일',
+        age: 31,
+        height: '186cm',
+        weight: '75kg',
+        foot: '오른발'
     },
     {
-        id: 4,
         number: 6,
         name: 'Sami Khedira',
         uname: 'Khedira',
-        position: 'mf',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '유벤투스 FC',
+        position: 'MF 미드필더',
+        nation: '독일',
+        age: 33,
+        height: '189cm',
+        weight: '90kg',
+        foot: '오른발'
     },
     {
-        id: 5,
         number: 18,
         name: 'Toni Kroos',
         uname: 'Kroos',
-        position: 'mf',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '레알 마드리드',
+        position: 'MF 미드필더',
+        nation: '독일',
+        age: 30,
+        height: '183cm',
+        weight: '76kg',
+        foot: '양발'
     },
     {
-        id: 6,
         number: 7,
         name: 'Bastian Schweinsteiger',
         uname: 'Schweinsteiger',
-        position: 'mf',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '시카고 파이어',
+        position: 'MF 미드필더',
+        nation: '독일',
+        age: 36,
+        height: '183cm',
+        weight: '79kg',
+        foot: '오른발'
     },
     {
-        id: 7,
         number: 4,
         name: 'Benedikt Howedes',
         uname: 'Howedes',
-        position: 'cb',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: 'FC 로코모티브 모스크바',
+        position: 'CB 수비수',
+        nation: '독일',
+        age: 32,
+        height: '188cm',
+        weight: '77kg',
+        foot: '오른발'
     },
     {
-        id: 8,
         number: 5,
         name: 'Mats Hummels',
         uname: 'Hummels',
-        position: 'cb',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '보루시아 도르트문트',
+        position: 'CB 수비수',
+        nation: '독일',
+        age: 32,
+        height: '191cm',
+        weight: '92kg',
+        foot: '오른발'
     },
     {
-        id: 9,
         number: 20,
         name: 'Jerome Boateng',
         uname: 'Boateng',
-        position: 'cb',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: 'FC 바이에른 뮌헨',
+        position: 'CB 수비수',
+        nation: '독일',
+        age: 32,
+        height: '192cm',
+        weight: '90kg',
+        foot: '오른발'
     },
     {
-        id: 10,
         number: 16,
         name: 'Philipp Lahm',
         uname: 'Lahm',
-        position: 'cb',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: '-',
+        position: 'CB 수비수',
+        nation: '독일',
+        age: 37,
+        height: '170cm',
+        weight: '66kg',
+        foot: '오른발'
     },
     {
-        id: 11,
         number: 1,
         name: 'Manuel Neuer',
         uname: 'Neuer',
-        position: 'gk',
-        nation: 'germany',
-        age: 20,
-        height: 180,
-        foot: 'Right'
+        team: 'FC 바이에른 뮌헨',
+        position: 'GK 골키퍼',
+        nation: '독일',
+        age: 34,
+        height: '193cm',
+        weight: '92kg',
+        foot: '오른발'
     }
 ]
 

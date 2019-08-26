@@ -22,7 +22,7 @@ m372 -510 c80 -34 295 -106 415 -138 361 -97 678 -139 1098 -148 490 -10 883
   </div>
 </template>
 <script>
-import eventBus from '/src/eventBus.js'
+import eventBus from '../eventBus'
 
 export default {
   data : function() {
