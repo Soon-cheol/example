@@ -8,5 +8,5 @@ $ npm install
 ### Serve
 
 ```sh
-npm run serve
+npm run dev
 ```
