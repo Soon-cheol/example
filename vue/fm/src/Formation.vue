@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Player v-for="p in playerlist" :propsNumber="p.number" :propsName="p.uname" :key="p.id" />
+        <Player v-for="p in playerlist" :props="p" :key="p.id" />
     </div>
 </template>
 <script>
@@ -11,8 +11,7 @@ export default {
         Player
     },
     props: {
-        propsNumber: {},
-        propsName: {}
+        props: {}
         // playerlist.name
     },
     data : function() {

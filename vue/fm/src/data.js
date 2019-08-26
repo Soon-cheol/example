@@ -155,4 +155,4 @@ const playerlist = [
     }
 ]
 
-export default playerlist
+export default playerlist;

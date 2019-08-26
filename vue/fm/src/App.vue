@@ -17,16 +17,6 @@ export default {
   components: {
     Formation,
     Infomation
-  },
-  data() {
-    return {
-      
-    };
-  },
+  }
 };
 </script>
-
-<style>
-/* @import url('/src/assets/css/reset.css');
-@import url('/src/assets/css/layout.css'); */
-</style>

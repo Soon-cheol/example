@@ -1,5 +1,5 @@
 <template>
-  <div class="player">
+  <div class="player" @click="playerInfo">
     <span class="name">{{name}}</span>
     <span class="number">{{number}}</span>
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -22,15 +22,22 @@ m372 -510 c80 -34 295 -106 415 -138 361 -97 678 -139 1098 -148 490 -10 883
   </div>
 </template>
 <script>
+import eventBus from '/src/eventBus.js'
+
 export default {
   data : function() {
-        return {
-            number: this.propsNumber,
-            name: this.propsName
-        }
-    },
+      return {
+          name: this.props.uname,
+          number: this.props.number
+      }
+  },
   props: [
-    'propsNumber', 'propsName'
-  ]
+    'props'
+  ],
+  methods : {
+    playerInfo : function(){
+      eventBus.$emit('player-info', this.props);
+    }
+  }
 }
 </script>
