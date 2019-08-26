@@ -6,7 +6,8 @@
     "scripts": {
         "clean": "rimraf dist",
         "build": "npm run clean && webpack --mode production",
-        "serve": "webpack-dev-server --mode development"
+        "dev": "webpack-dev-server --mode development",
+        "start": "npm run dev"
     },
     "devDependencies": {
         "@babel/core": "^7.5.5",
