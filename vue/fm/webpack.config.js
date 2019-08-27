@@ -16,7 +16,7 @@ module.exports = {
         ]
     },
     devServer: {
-        open: false,
+        open: true,
         hot: true, // 소스가 변경되면 자동으로 빌드되어 반영된다.
         port: 9002, // 서버 포트
         // inline: true, // 핫리로드를 위한 스크립트를 삽입한다. 
