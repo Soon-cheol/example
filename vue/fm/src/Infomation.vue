@@ -38,7 +38,7 @@
     </div>
 </template>
 <script>
-import eventBus from './eventBus.js'
+import eventBus from './eventBus'
 
 export default {
     created : function() {
