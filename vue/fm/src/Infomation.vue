@@ -7,6 +7,9 @@
                 <span>{{info.name}}</span>
             </li>
             <li>
+                <img :src="info.image" />
+            </li>
+            <li>
                 <span>소속팀 : </span>
                 <span>{{info.team}}</span>
             </li>
@@ -47,18 +50,27 @@ export default {
     data : function() {
         return {
             info: {
-                number: this.props[0].number,
-                name: this.props[0].name,
-                team: this.props[0].team,
-                position: this.props[0].position,
-                nation: this.props[0].nation,
-                age: this.props[0].age,
-                height: this.props[0].height,
-                foot: this.props[0].foot
+                // number: this.props[0].number,
+                // name: this.props[0].name,
+                // team: this.props[0].team,
+                // position: this.props[0].position,
+                // nation: this.props[0].nation,
+                // age: this.props[0].age,
+                // height: this.props[0].height,
+                // foot: this.props[0].foot
+                number: '',
+                name: '',
+                image: '',
+                team: '',
+                position: '',
+                nation: '',
+                age: '',
+                height: '',
+                foot: ''
             }
         }
     },
-    props: ['props'],
+    // props: ['props'],
     methods : {
         playerInfo :function(info){
             // let value = Object.values(info);
@@ -68,6 +80,7 @@ export default {
             // }
             this.info.number = info.number;
             this.info.name = info.name;
+            this.info.image = '/src/assets/images/' + info.uname + '.jpg';
             this.info.team = info.team;
             this.info.position = info.position;
             this.info.nation = info.nation;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="infomation">
-      <Infomation :props="data" />
+      <Infomation />
     </div>
     <div class="ground position433">
       <Formation :props="data" />
