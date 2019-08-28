@@ -4,20 +4,16 @@
     </div>
 </template>
 <script>
-import data from './data'
 import Player from './components/Player.vue'
 export default {
     components: {
         Player
     },
-    props: {
-        props: {}
-        // playerlist.name
-    },
+    props: ['props'],
     data : function() {
         return {
-            playerlist : data
+            playerlist : this.props
         }
-    },
+    }
 };
 </script>

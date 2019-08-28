@@ -31,9 +31,7 @@ export default {
           number: this.props.number
       }
   },
-  props: [
-    'props'
-  ],
+  props: ['props'],
   methods : {
     playerInfo : function(){
       eventBus.$emit('player-info', this.props);

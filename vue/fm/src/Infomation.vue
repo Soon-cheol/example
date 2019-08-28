@@ -47,18 +47,18 @@ export default {
     data : function() {
         return {
             info: {
-                id: '',
-                number: '',
-                name: '',
-                team: '',
-                position: '',
-                nation: '',
-                age: '',
-                height: '',
-                foot: ''
+                number: this.props[0].number,
+                name: this.props[0].name,
+                team: this.props[0].team,
+                position: this.props[0].position,
+                nation: this.props[0].nation,
+                age: this.props[0].age,
+                height: this.props[0].height,
+                foot: this.props[0].foot
             }
         }
     },
+    props: ['props'],
     methods : {
         playerInfo :function(info){
             // let value = Object.values(info);
