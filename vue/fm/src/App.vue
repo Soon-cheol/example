@@ -8,7 +8,7 @@
       <Infomation />
     </div>
     <div class="ground position433">
-      <router-view></router-view>
+      <router-view :props="data"></router-view>
     </div>
   </div>
 </template>
