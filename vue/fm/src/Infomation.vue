@@ -50,14 +50,6 @@ export default {
     data : function() {
         return {
             info: {
-                // number: this.props[0].number,
-                // name: this.props[0].name,
-                // team: this.props[0].team,
-                // position: this.props[0].position,
-                // nation: this.props[0].nation,
-                // age: this.props[0].age,
-                // height: this.props[0].height,
-                // foot: this.props[0].foot
                 number: '',
                 name: '',
                 image: '',
@@ -78,15 +70,27 @@ export default {
             // for(var i = 0; i < values.length; i++){
             // console.log(this.info.values)
             // }
-            this.info.number = info.number;
-            this.info.name = info.name;
-            this.info.image = '/src/assets/images/' + info.uname + '.jpg';
-            this.info.team = info.team;
-            this.info.position = info.position;
-            this.info.nation = info.nation;
-            this.info.age = info.age;
-            this.info.height = info.height;
-            this.info.foot = info.foot;
+            if(info == 0){
+                this.info.number = '';
+                this.info.name = '';
+                this.info.image = '';
+                this.info.team = '';
+                this.info.position = '';
+                this.info.nation = '';
+                this.info.age = '';
+                this.info.height = '';
+                this.info.foot = '';
+            }else{
+                this.info.number = info.number;
+                this.info.name = info.name;
+                this.info.image = '/src/assets/images/' + info.nation + '/' + info.uname + '.jpg';
+                this.info.team = info.team;
+                this.info.position = info.position;
+                this.info.nation = info.nation;
+                this.info.age = info.age;
+                this.info.height = info.height;
+                this.info.foot = info.foot;
+            }
         }
     }
 };

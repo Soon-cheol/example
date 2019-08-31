@@ -21,6 +21,7 @@ import data from './data'
 import Germany from './components/Germany.vue'
 import France from './components/France.vue'
 import Infomation from './Infomation.vue'
+import eventBus from './eventBus'
 import vueRouter from 'vue-router'
 
 const router = new vueRouter({
@@ -40,6 +41,11 @@ export default {
   },
   props: {
       props: {}
+  },
+  watch: {
+    '$route' (to, from) {
+      eventBus.$emit('player-info', 0);
+    }
   },
   data : function() {
       return {
