@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import Player from './components/Player.vue'
+import Player from './Player.vue'
 export default {
     components: {
         Player
@@ -12,7 +12,7 @@ export default {
     props: ['props'],
     data : function() {
         return {
-            playerlist : this.props.france
+            playerlist : this.props.Germany
         }
     }
 };

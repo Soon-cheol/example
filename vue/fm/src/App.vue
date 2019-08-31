@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div>
-      <router-link to="/for1"><button>fomation1</button></router-link>
-      <router-link to="/for2"><button>fomation2</button></router-link>
+      <router-link to="/Germany"><button>Germany</button></router-link>
+      <router-link to="/France"><button>France</button></router-link>
     </div>
     <div class="infomation">
       <Infomation />
@@ -15,15 +15,15 @@
 
 <script>
 import data from './data'
-import Formation1 from './Formation1.vue'
-import Formation2 from './Formation2.vue'
+import Germany from './components/Germany.vue'
+import France from './components/France.vue'
 import Infomation from './Infomation.vue'
 import vueRouter from 'vue-router'
 
 const router = new vueRouter({
   routes: [
-    {path: '/for1', component: Formation1},
-    {path: '/for2', component: Formation2}
+    {path: '/Germany', component: Germany},
+    {path: '/France', component: France}
   ]
 })
 
@@ -31,8 +31,8 @@ export default {
   name : 'app',
   router,
   components: {
-    Formation1,
-    Formation2,
+    Germany,
+    France,
     Infomation
   },
   props: {

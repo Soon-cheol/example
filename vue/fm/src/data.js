@@ -1,6 +1,6 @@
 const playerlist = {
-    // germany : Start
-    "germany": [{
+    // Germany : Start
+    "Germany": [{
             number: 8,
             name: 'Mesut Ozil',
             uname: 'Ozil',
@@ -133,10 +133,10 @@ const playerlist = {
             foot: '오른발'
         }
     ],
-    // germany : End
-    // france : Start
-    "france": [{
-            number: 8,
+    // Germany : End
+    // France : Start
+    "France": [{
+            number: 11,
             name: '그리즈만',
             uname: '그리즈만',
             team: '아스날 FC',
@@ -148,7 +148,7 @@ const playerlist = {
             foot: '왼발'
         },
         {
-            number: 11,
+            number: 10,
             name: '벤제마',
             uname: '벤제마',
             team: '-',
@@ -160,9 +160,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 13,
-            name: '음바페',
-            uname: '음바페',
+            number: 8,
+            name: '발부에나',
+            uname: '발부에나',
             team: 'FC 바이에른 뮌헨',
             position: 'FW 공격수',
             nation: '독일',
@@ -173,8 +173,8 @@ const playerlist = {
         },
         {
             number: 6,
-            name: 'Sami Khedira',
-            uname: 'Khedira',
+            name: '카바예',
+            uname: '카바예',
             team: '유벤투스 FC',
             position: 'MF 미드필더',
             nation: '독일',
@@ -184,9 +184,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 18,
-            name: 'Toni Kroos',
-            uname: 'Kroos',
+            number: 14,
+            name: '마투이디',
+            uname: '마투이디',
             team: '레알 마드리드',
             position: 'MF 미드필더',
             nation: '독일',
@@ -196,9 +196,9 @@ const playerlist = {
             foot: '양발'
         },
         {
-            number: 7,
-            name: 'Bastian Schweinsteiger',
-            uname: 'Schweinsteiger',
+            number: 19,
+            name: '포그바',
+            uname: '포그바',
             team: '시카고 파이어',
             position: 'MF 미드필더',
             nation: '독일',
@@ -208,9 +208,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 4,
-            name: 'Benedikt Howedes',
-            uname: 'Howedes',
+            number: 3,
+            name: '에브라',
+            uname: '에브라',
             team: 'FC 로코모티브 모스크바',
             position: 'CB 수비수',
             nation: '독일',
@@ -220,9 +220,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 5,
-            name: 'Mats Hummels',
-            uname: 'Hummels',
+            number: 4,
+            name: '바란',
+            uname: '바란',
             team: '보루시아 도르트문트',
             position: 'CB 수비수',
             nation: '독일',
@@ -232,9 +232,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 20,
-            name: 'Jerome Boateng',
-            uname: 'Boateng',
+            number: 21,
+            name: '코시엘니',
+            uname: '코시엘니',
             team: 'FC 바이에른 뮌헨',
             position: 'CB 수비수',
             nation: '독일',
@@ -244,9 +244,9 @@ const playerlist = {
             foot: '오른발'
         },
         {
-            number: 16,
-            name: 'Philipp Lahm',
-            uname: 'Lahm',
+            number: 15,
+            name: '사그나',
+            uname: '사그나',
             team: '-',
             position: 'CB 수비수',
             nation: '독일',
@@ -257,8 +257,8 @@ const playerlist = {
         },
         {
             number: 1,
-            name: 'Manuel Neuer',
-            uname: 'Neuer',
+            name: '요리스',
+            uname: '요리스',
             team: 'FC 바이에른 뮌헨',
             position: 'GK 골키퍼',
             nation: '독일',
@@ -268,6 +268,6 @@ const playerlist = {
             foot: '오른발'
         }
     ],
-    // france : End
+    // France : End
 }
 export default playerlist;
