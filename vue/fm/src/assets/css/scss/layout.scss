@@ -23,8 +23,11 @@ body {
             background: #5a5a5a;
             text-align: left;
             color: #fff;
-            .name {
-                font-size: 30px
+            li {
+                line-height: 22px;
+                &.name {
+                    font-size: 30px
+                }
             }
         }
         .ground {
