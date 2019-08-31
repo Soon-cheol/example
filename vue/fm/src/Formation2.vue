@@ -12,7 +12,7 @@ export default {
     props: ['props'],
     data : function() {
         return {
-            playerlist : this.props
+            playerlist : this.props.france
         }
     }
 };
