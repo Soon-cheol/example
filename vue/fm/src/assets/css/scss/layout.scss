@@ -10,19 +10,35 @@ body {
     width: 100%;
     text-align: center;
     background: #3a3a3a;
+    color: #fff;
     #app {
         display: table;
         width: 1280px;
         margin: 0 auto;
-        &>div {
-            display: table-cell;
+        #nav {
+            a {
+                &.router-link-active {
+                    button {
+                        color: #fff;
+                    }
+                }
+                button {
+                    padding: 14px 20px;
+                    font-size: 16px;
+                    color: #616161;
+                }
+            }
+        }
+        #content {
+            &>div {
+                display: table-cell;
+            }
         }
         .infomation {
             width: 730px;
             padding: 20px 60px 20px 20px;
             background: #5a5a5a;
             text-align: left;
-            color: #fff;
             li {
                 line-height: 22px;
                 &.name {

@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <div>
+    <h1>2014 월드컵 나라별 포메이션</h1>
+    <div id="nav">
       <router-link to="/Germany"><button>Germany</button></router-link>
       <router-link to="/France"><button>France</button></router-link>
     </div>
-    <div class="infomation">
-      <Infomation />
-    </div>
-    <div class="ground position433">
-      <router-view :props="data"></router-view>
+    <div id="content">
+      <div class="infomation">
+        <Infomation />
+      </div>
+      <div class="ground position433">
+        <router-view :props="data"></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +34,8 @@ export default {
   name : 'app',
   router,
   components: {
-    Germany,
-    France,
+    // Germany,
+    // France,
     Infomation
   },
   props: {
