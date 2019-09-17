@@ -1,7 +1,7 @@
 <template id='lnbTemplate'>
-    <div id='lnb'>
-        <span style="display:none;">{{fullName}}</span>
-        <ul class='menu-list'>
+    <div>
+        <span>{{ fullName }}</span>
+        <!-- <ul class='menu_list'>
           <template v-for="(detail) in menu.menuList">
             <li v-if="detail.name === menu.active" v-bind:key="detail.name">
               <span v-for="(li, index) in detail.subList" v-bind:key="index">
@@ -9,14 +9,17 @@
               </span>
             </li>
           </template>
-        </ul>
+        </ul> -->
     </div>
 </template>
 <script>
 export default {
   name: 'Lnb',
-  props: ['menu'],
+  props: ['name'],
   data () {
+    return {
+      fullName: this.name
+    }
   },
   methods: {
   },

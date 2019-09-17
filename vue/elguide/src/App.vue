@@ -4,14 +4,14 @@
       <div id="header">
           <h1><img class="hanwha-logo" src="./assets/svg/hanwha_logo.svg"></h1>
           <div id="gnb">
-            <Gnb :menu="menuInfo" :name="userName" />
+            <Gnb :menu="menuInfo" />
           </div>
       </div>
       <!-- // header -->
       <!-- container -->
       <div id="container">
           <div id="lnb">
-            <!-- <Lnb /> -->
+            <Lnb :name="userName" />
           </div>
           <div id="contents">
             <!-- <router-view /> -->

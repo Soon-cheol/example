@@ -242,7 +242,7 @@ a {
             height: 40px;
         }
     }
-    .menu-list {
+    .menu_list {
         float: left;
         width: 84%;
         height: 100%;
@@ -261,14 +261,14 @@ a {
             }
         }
     }
-    .gnb-option {
+    .gnb_option {
         position: absolute;
         overflow: hidden;
         width: 400px;
         top: 10px;
         right: 0;
         padding-right: 20px;
-        .login-info {
+        .login_info {
             display: table;
             float: left;
             .time {
@@ -300,7 +300,7 @@ a {
         max-width: 210px;
         height: 100%;
         vertical-align: top;
-        .menu-list {
+        .menu_list {
             overflow: hidden;
             li {
                 a {

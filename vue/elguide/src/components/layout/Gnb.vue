@@ -1,15 +1,13 @@
 <template id='gnbTemplate'>
   <div>
-
-    <ul class='menu-list'>
+    <ul class='menu_list'>
       <li v-for="(detail, index) in menu.menuList" :key="index" >
         <a>{{ detail.name }}</a>
       </li>
     </ul>
-
-    <div class="gnb-option mgr10">
-      <div class="login-info">
-        <span v-if="loginAdminNm !== null">{{ loginAdminNm }}님 안녕하세요!</span>
+    <div class="gnb_option mgr10">
+      <div class="login_info">
+        <span v-if="loginAdminNm !== null">{{loginAdminNm}}님 안녕하세요!</span>
       </div>
       <el-button>로그아웃</el-button>
     </div>
@@ -19,7 +17,7 @@
 
 export default {
   name: 'Gnb',
-  props: ['menu','name'],
+  props: ['menu', 'name'],
   data () {
     return {
       loginAdminNm: this.name,
