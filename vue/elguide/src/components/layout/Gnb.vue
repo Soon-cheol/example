@@ -33,6 +33,7 @@ export default {
     }
   },
   created () {
+    this.menu.menuList[0].isActive = true
     // console.log('menu', this.menu)
     // console.log('name', this.name)
   }

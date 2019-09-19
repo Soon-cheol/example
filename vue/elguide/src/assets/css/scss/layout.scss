@@ -258,6 +258,9 @@ a {
                 &.active {
                     color: $mainColor;
                 }
+                span{
+                    display: block;
+                }
             }
         }
     }

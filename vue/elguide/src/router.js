@@ -4,6 +4,11 @@ import menu21 from '@/components/page/menu21'
 
 let routes = [
   {
+    name: 'menu',
+    path: '/',
+    component: menu11
+  },
+  {
     name: 'menu11',
     path: '/menu11',
     component: menu11

@@ -35,6 +35,7 @@ export default {
   computed: {
   },
   created () {
+      this.menu.menuList[0].subList[0].isActive = true
   }
 }
 </script>

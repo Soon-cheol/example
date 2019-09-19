@@ -4,7 +4,7 @@
       <div id="header">
           <h1><img class="hanwha-logo" src="./assets/svg/hanwha_logo.svg"></h1>
           <div id="gnb">
-            <Gnb :menu="menuInfo" :loginAdminNm="userName" />
+            <Gnb :menu="menuInfo" :name="userName" />
           </div>
       </div>
       <!-- // header -->
