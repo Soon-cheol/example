@@ -4,17 +4,17 @@
       <div id="header">
           <h1><img class="hanwha-logo" src="./assets/svg/hanwha_logo.svg"></h1>
           <div id="gnb">
-            <Gnb :menu="menuInfo" />
+            <Gnb :menu="menuInfo" :loginAdminNm="userName" />
           </div>
       </div>
       <!-- // header -->
       <!-- container -->
       <div id="container">
           <div id="lnb">
-            <Lnb :name="userName" />
+            <Lnb :menu="menuInfo" />
           </div>
           <div id="contents">
-            <!-- <router-view /> -->
+            <router-view />
           </div>
       </div>
       <!-- // container -->
@@ -77,14 +77,14 @@ const list8 = [
 ]
 
 const menuList = [
-  {name: '전시관리', isActive: false, url: '', subList: list1},
-  {name: '콘텐츠관리', isActive: false, url: '', subList: list2},
-  {name: 'CP관리', isActive: false, url: '', subList: list3},
-  {name: '이벤트관리', isActive: false, url: '', subList: list4},
-  {name: '서비스관리', isActive: false, url: '', subList: list5},
-  {name: '회원관리', isActive: false, url: '', subList: list6},
-  {name: '통계관리', isActive: false, url: '', subList: list7},
-  {name: '유틸리티', isActive: false, url: '', subList: list8}
+  {name: '전시관리', isActive: false, url: '/menu1', subList: list1},
+  {name: '콘텐츠관리', isActive: false, url: '/menu2', subList: list2},
+  {name: 'CP관리', isActive: false, url: '/menu3', subList: list3},
+  {name: '이벤트관리', isActive: false, url: '/menu4', subList: list4},
+  {name: '서비스관리', isActive: false, url: '/menu5', subList: list5},
+  {name: '회원관리', isActive: false, url: '/menu6', subList: list6},
+  {name: '통계관리', isActive: false, url: '/menu7', subList: list7},
+  {name: '유틸리티', isActive: false, url: '/menu8', subList: list8}
 ]
 
 export default {

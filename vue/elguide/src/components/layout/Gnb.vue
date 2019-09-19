@@ -2,12 +2,12 @@
   <div>
     <ul class='menu_list'>
       <li v-for="(detail, index) in menu.menuList" :key="index" >
-        <a>{{ detail.name }}</a>
+        <router-link :class="{active:detail.isActive}" :to="{path:detail.url}"><span @click="gnbActive(index)">{{ detail.name }}</span></router-link>
       </li>
     </ul>
     <div class="gnb_option mgr10">
       <div class="login_info">
-        <span v-if="loginAdminNm !== null">{{loginAdminNm}}님 안녕하세요!</span>
+        <span v-if="loginAdminNm !== null">{{ loginAdminNm }}님 안녕하세요!</span>
       </div>
       <el-button>로그아웃</el-button>
     </div>
@@ -20,20 +20,17 @@ export default {
   props: ['menu', 'name'],
   data () {
     return {
-      loginAdminNm: this.name,
-      menulist: [
-        {menu: '전시관리', isActive: true},
-        {menu: '위젯관리', isActive: false},
-        {menu: '콘텐츠관리', isActive: false},
-        {menu: '이벤트관리', isActive: false},
-        {menu: '회원관리', isActive: false},
-        {menu: '서비스관리', isActive: false},
-        {menu: '정산', isActive: false},
-        {menu: '통계', isActive: false}
-      ]
+      loginAdminNm: this.name
     }
   },
   methods: {
+    gnbActive (index) {
+      let l = this.menu.menuList.length
+      for (var i = 0; i < l; i++){
+        this.menu.menuList[i].isActive = false
+      }
+      this.menu.menuList[index].isActive = true
+    }
   },
   created () {
     // console.log('menu', this.menu)
