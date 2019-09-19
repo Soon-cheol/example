@@ -6,7 +6,7 @@
             <li v-if="detail.isActive" v-bind:key="detail.name">
               <ul>
                 <li v-for="(li, index) in detail.subList" v-bind:key="index">
-                  <router-link :class="{active:li.isActive}" :to="{path:detail.url}"><span @click="lnbActive(detail, index)">{{ li.name }}</span></router-link>
+                  <router-link :class="{active:li.isActive}" :to="{path:li.url}"><span @click="lnbActive(detail, index)">{{ li.name }}</span></router-link>
                 </li>
               </ul>
             </li>
