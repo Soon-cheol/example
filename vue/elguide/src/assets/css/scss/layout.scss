@@ -305,7 +305,6 @@ a {
             li {
                 a {
                     display: block;
-                    padding: 20px;
                     border-bottom: 1px solid $borderColor3;
                     background: #fff;
                     font-size: 14px;
@@ -317,6 +316,10 @@ a {
                         border-bottom: 1px solid #dfdfdf;
                         margin-top: -1px;
                         color: #f36910;
+                    }
+                    span{
+                        display: block;
+                        padding: 20px;
                     }
                 }
                 .lnb_arw {

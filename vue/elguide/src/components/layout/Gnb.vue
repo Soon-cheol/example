@@ -5,7 +5,7 @@
         <router-link :class="{active:detail.isActive}" :to="{path:detail.url}"><span @click="gnbActive(index)">{{ detail.name }}</span></router-link>
       </li>
     </ul>
-    <div class="gnb_option mgr10">
+    <div class="gnb_option">
       <div class="login_info">
         <span v-if="loginAdminNm !== null">{{ loginAdminNm }}님 안녕하세요!</span>
       </div>

@@ -4,9 +4,11 @@
         <ul class='menu_list'>
           <template v-for="(detail) in menu.menuList">
             <li v-if="detail.isActive" v-bind:key="detail.name">
-              <span v-for="(li, index) in detail.subList" v-bind:key="index">
-                <a href="javascript:void(0)" v-bind:class="{active:li.isActive }" @click="onClickToPage(li, index)" >{{ li.name }}</a>
-              </span>
+              <ul>
+                <li v-for="(li, index) in detail.subList" v-bind:key="index">
+                  <router-link :class="{active:li.isActive}" :to="{path:detail.url}"><span @click="lnbActive(detail, index)">{{ li.name }}</span></router-link>
+                </li>
+              </ul>
             </li>
           </template>
         </ul>
@@ -22,11 +24,17 @@ export default {
     }
   },
   methods: {
+    lnbActive (detail, index) {
+      let l = detail.subList.length
+      for (var i = 0; i < l; i++){
+        detail.subList[i].isActive = false
+      }
+      detail.subList[index].isActive = true
+    }
   },
   computed: {
   },
   created () {
-    console.log('menu', this.menu)
   }
 }
 </script>

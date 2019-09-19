@@ -27,24 +27,23 @@ import Gnb from './components/layout/Gnb'
 import Lnb from './components/layout/Lnb'
 
 const list1 = [
-  {name: '프로모션 관리', url: '', isActive: false},
-  {name: 'Suggest 관리', url: '', isActive: false},
-  {name: 'Discover 관리', url: '', isActive: false},
-  {name: '위젯 관리', url: '', isActive: false},
-  {name: '날씨메시지관리', url: '', isActive: false},
-  {name: '국내축구', url: '', isActive: false},
-  {name: '해외축구', url: '', isActive: false},
-  {name: '국내농구', url: '', isActive: false},
-  {name: '해외농구', url: '', isActive: false},
-  {name: '오늘의명언', url: '', isActive: false}
+  {name: '프로모션 관리', url: '/menu11', isActive: false},
+  {name: 'Suggest 관리', url: '/menu12', isActive: false},
+  {name: 'Discover 관리', url: '/menu13', isActive: false},
+  {name: '위젯 관리', url: '/menu14', isActive: false},
+  {name: '날씨메시지관리', url: '/menu15', isActive: false},
+  {name: '국내축구', url: '/menu16', isActive: false},
+  {name: '해외축구', url: '/menu17', isActive: false},
+  {name: '국내농구', url: '/menu18', isActive: false},
+  {name: '해외농구', url: '/menu19', isActive: false}
 ]
 const list2 = [
-  {name: '콘텐츠 관리', url: '', isActive: false},
-  {name: 'Line 관리', url: '', isActive: false},
-  {name: '카테고리 관리', url: '', isActive: false},
-  {name: '태그 관리', url: '', isActive: false},
-  {name: '검색어 관리', url: '', isActive: false},
-  {name: 'Placeholder 관리', url: '', isActive: false}
+  {name: '콘텐츠 관리', url: '/menu21', isActive: false},
+  {name: 'Line 관리', url: '/menu22', isActive: false},
+  {name: '카테고리 관리', url: '/menu23', isActive: false},
+  {name: '태그 관리', url: '/menu24', isActive: false},
+  {name: '검색어 관리', url: '/menu25', isActive: false},
+  {name: 'Placeholder 관리', url: '/menu26', isActive: false}
 ]
 const list3 = [{name: 'CP관리', url: '', isActive: false}]
 const list4 = [{name: '이벤트관리', url: '', isActive: false}]
@@ -77,14 +76,14 @@ const list8 = [
 ]
 
 const menuList = [
-  {name: '전시관리', isActive: false, url: '/menu1', subList: list1},
-  {name: '콘텐츠관리', isActive: false, url: '/menu2', subList: list2},
-  {name: 'CP관리', isActive: false, url: '/menu3', subList: list3},
-  {name: '이벤트관리', isActive: false, url: '/menu4', subList: list4},
-  {name: '서비스관리', isActive: false, url: '/menu5', subList: list5},
-  {name: '회원관리', isActive: false, url: '/menu6', subList: list6},
-  {name: '통계관리', isActive: false, url: '/menu7', subList: list7},
-  {name: '유틸리티', isActive: false, url: '/menu8', subList: list8}
+  {name: '전시관리', isActive: false, url: '/menu11', subList: list1},
+  {name: '콘텐츠관리', isActive: false, url: '/menu21', subList: list2},
+  {name: 'CP관리', isActive: false, url: '/menu31', subList: list3},
+  {name: '이벤트관리', isActive: false, url: '/menu41', subList: list4},
+  {name: '서비스관리', isActive: false, url: '/menu51', subList: list5},
+  {name: '회원관리', isActive: false, url: '/menu61', subList: list6},
+  {name: '통계관리', isActive: false, url: '/menu71', subList: list7},
+  {name: '유틸리티', isActive: false, url: '/menu81', subList: list8}
 ]
 
 export default {

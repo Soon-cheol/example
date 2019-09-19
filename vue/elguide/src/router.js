@@ -1,17 +1,17 @@
 import VueRouter from 'vue-router'
-import menu1 from '@/components/page/menu1'
-import menu2 from '@/components/page/menu2'
+import menu11 from '@/components/page/menu11'
+import menu21 from '@/components/page/menu21'
 
 let routes = [
   {
-    name: 'menu1',
-    path: '/menu1',
-    component: menu1
+    name: 'menu11',
+    path: '/menu11',
+    component: menu11
   },
   {
-    name: 'menu2',
-    path: '/menu2',
-    component: menu2
+    name: 'menu21',
+    path: '/menu21',
+    component: menu21
   }
 ]
 export default new VueRouter({routes, mode: 'history'})
