@@ -19,12 +19,7 @@ class Number extends Component {
         </button>
       </div>
     ))
-    return (
-      <div className="calc-number">
-        {/*<num value="1" />*/}
-        {numList}
-      </div>
-    )
+    return <div className="calc-number">{numList}</div>
   }
 }
 
