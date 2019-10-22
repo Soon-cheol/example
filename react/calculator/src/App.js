@@ -10,11 +10,9 @@ class App extends Component {
     super(props)
     this.state = {
       startValue: 0,
-      formValue: {
-        val1: 0,
-        val2: 0
-      },
-      formula: 0,
+      formValue1: 0,
+      formValue2: 0,
+      formula: '',
       formCheck: false,
       viewValue: "0",
       endValue: 0
@@ -23,25 +21,39 @@ class App extends Component {
   numberCallback = dataFromChild => {
     this.setState({
       viewValue: this.state.viewValue === "0" ? dataFromChild : this.state.viewValue + dataFromChild
-      // formValue: this.state.viewValue * 1
     })
   }
   formCallback = dataFromChild => {
-    let formIndex
     if (dataFromChild === "=") {
-      if (this.state.viewValue.indexOf(["+"])) {
-        formIndex = this.state.viewValue.indexOf(["+"])
-      } else if (this.state.viewValue.indexOf(["-"])) {
-        formIndex = this.state.viewValue.indexOf(["-"])
-      } else if (this.state.viewValue.indexOf(["x"])) {
-        formIndex = this.state.viewValue.indexOf(["x"])
-      } else if (this.state.viewValue.indexOf(["/"])) {
-        formIndex = this.state.viewValue.indexOf(["/"])
+      console.log(this.state.viewValue)
+      if(this.state.formula === ''){
+        alert('연산식을 입력하세요.')
+      }else{
+        let fNum = this.state.viewValue.indexOf(this.state.formula);
+        this.state.formValue1 = this.state.viewValue.substring(0, fNum) * 1;
+        this.state.formValue2  = this.state.viewValue.substring(fNum + 1) * 1;
+        if(this.state.formula === '+'){
+          this.setState({
+            viewValue : this.state.formValue1 + this.state.formValue2
+          })
+        }else if(this.state.formula === '-'){
+          this.setState({
+            viewValue : this.state.formValue1 - this.state.formValue2
+          })
+        }else if(this.state.formula === 'x'){
+          this.setState({
+            viewValue : this.state.formValue1 * this.state.formValue2
+          })
+        }else if(this.state.formula === '/'){
+          this.setState({
+            viewValue : this.state.formValue1 / this.state.formValue2
+          })
+        }
       }
-      console.log(formIndex)
     } else {
       this.setState({
         formCheck: true,
+        formula: dataFromChild,
         viewValue: this.formCheck(dataFromChild)
       })
     }
@@ -54,10 +66,20 @@ class App extends Component {
       return this.state.viewValue
     }
   }
+  reset = () => {
+    this.setState({
+      startValue: 0,
+      formValue1: 0,
+      formValue2: 0,
+      formula: '',
+      formCheck: false,
+      viewValue: "0",
+      endValue: 0
+    })
+  }
   render() {
     return (
       <div className="calc-wrap">
-        {/* <Value /> */}
         <div className="calc-header">
           <div className="value">{this.state.viewValue}</div>
         </div>
@@ -65,7 +87,7 @@ class App extends Component {
           <Number callbackFromParent={this.numberCallback} />
           <Formula callbackFromParent={this.formCallback} />
         </div>
-        formValue : {this.state.formValue.val1 + this.state.formValue.val2}
+        <button onClick={this.reset}>초기화 버튼</button>
       </div>
     )
   }
