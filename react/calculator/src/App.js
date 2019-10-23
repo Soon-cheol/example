@@ -10,12 +10,9 @@ class App extends Component {
     super(props)
     this.state = {
       startValue: 0,
-      formValue1: 0,
-      formValue2: 0,
-      formula: '',
+      formula: "",
       formCheck: false,
-      viewValue: "0",
-      endValue: 0
+      viewValue: "0"
     }
   }
   numberCallback = dataFromChild => {
@@ -26,29 +23,44 @@ class App extends Component {
   formCallback = dataFromChild => {
     if (dataFromChild === "=") {
       console.log(this.state.viewValue)
-      if(this.state.formula === ''){
-        alert('연산식을 입력하세요.')
-      }else{
-        let fNum = this.state.viewValue.indexOf(this.state.formula);
-        this.state.formValue1 = this.state.viewValue.substring(0, fNum) * 1;
-        this.state.formValue2  = this.state.viewValue.substring(fNum + 1) * 1;
-        if(this.state.formula === '+'){
-          this.setState({
-            viewValue : this.state.formValue1 + this.state.formValue2
-          })
-        }else if(this.state.formula === '-'){
-          this.setState({
-            viewValue : this.state.formValue1 - this.state.formValue2
-          })
-        }else if(this.state.formula === 'x'){
-          this.setState({
-            viewValue : this.state.formValue1 * this.state.formValue2
-          })
-        }else if(this.state.formula === '/'){
-          this.setState({
-            viewValue : this.state.formValue1 / this.state.formValue2
-          })
+      if (this.state.formula === "") {
+        alert("연산식을 입력하세요.")
+      } else {
+        const fNum = this.state.viewValue.indexOf(this.state.formula)
+        let formValue1 = this.state.viewValue.substring(0, fNum) * 1
+        let formValue2 = this.state.viewValue.substring(fNum + 1) * 1
+        // if (formValue1.indexOf(["."]) === -1) {
+        //   formValue1 = (formValue1 + ".0") * 1
+        //   console.log(formValue1)
+        // }
+        // if (formValue2.indexOf(["."]) === -1) {
+        //   formValue2 = (formValue2 + ".0") * 1
+        //   console.log(formValue2)
+        // }
+        switch (this.state.formula) {
+          case "+":
+            this.setState({
+              viewValue: formValue1 + formValue2
+            })
+            break
+          case "-":
+            this.setState({
+              viewValue: formValue1 - formValue2
+            })
+            break
+          case "x":
+            this.setState({
+              viewValue: formValue1 * formValue2
+            })
+            break
+          case "/":
+            this.setState({
+              viewValue: formValue1 / formValue2
+            })
+            break
+          default:
         }
+        this.reset()
       }
     } else {
       this.setState({
@@ -69,12 +81,8 @@ class App extends Component {
   reset = () => {
     this.setState({
       startValue: 0,
-      formValue1: 0,
-      formValue2: 0,
-      formula: '',
-      formCheck: false,
-      viewValue: "0",
-      endValue: 0
+      formula: "",
+      formCheck: false
     })
   }
   render() {
