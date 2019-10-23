@@ -9,34 +9,43 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startValue: 0,
       formula: "",
       formCheck: false,
       viewValue: "0"
     }
   }
   numberCallback = dataFromChild => {
-    this.setState({
-      viewValue: this.state.viewValue === "0" ? dataFromChild : this.state.viewValue + dataFromChild
-    })
+    console.log("numberCallback length", this.state.viewValue)
+    if (dataFromChild === "B") {
+      if (this.state.viewValue.length > 1) {
+        this.setState({
+          viewValue: this.state.viewValue.slice(0, -1)
+        })
+      } else {
+        // if (this.state.viewValue.length === undefined) {
+        //   alert("연산하고 못지움")
+        // } else {
+        this.setState({
+          viewValue: "0"
+        })
+        // }
+      }
+    } else {
+      this.setState({
+        viewValue:
+          this.state.viewValue === "0" ? dataFromChild : this.state.viewValue + dataFromChild
+      })
+    }
   }
   formCallback = dataFromChild => {
     if (dataFromChild === "=") {
-      console.log(this.state.viewValue)
+      console.log("formCallback", this.state.viewValue)
       if (this.state.formula === "") {
         alert("연산식을 입력하세요.")
       } else {
         const fNum = this.state.viewValue.indexOf(this.state.formula)
         let formValue1 = this.state.viewValue.substring(0, fNum) * 1
         let formValue2 = this.state.viewValue.substring(fNum + 1) * 1
-        // if (formValue1.indexOf(["."]) === -1) {
-        //   formValue1 = (formValue1 + ".0") * 1
-        //   console.log(formValue1)
-        // }
-        // if (formValue2.indexOf(["."]) === -1) {
-        //   formValue2 = (formValue2 + ".0") * 1
-        //   console.log(formValue2)
-        // }
         switch (this.state.formula) {
           case "+":
             this.setState({
@@ -74,16 +83,23 @@ class App extends Component {
     if (this.state.formCheck === false) {
       return this.state.viewValue + v
     } else {
-      alert("연산은 한개만 가능!!")
+      alert("현재 연산을 수행 후 다음 연산 진행하세요.")
       return this.state.viewValue
     }
   }
-  reset = () => {
+  reset = v => {
     this.setState({
-      startValue: 0,
       formula: "",
       formCheck: false
     })
+    if (v === 0) {
+      this.setState({
+        viewValue: "0"
+      })
+    }
+  }
+  componentDidUpdate() {
+    // console.log("componentDidUpdate", this.state.viewValue)
   }
   render() {
     return (
@@ -95,7 +111,7 @@ class App extends Component {
           <Number callbackFromParent={this.numberCallback} />
           <Formula callbackFromParent={this.formCallback} />
         </div>
-        <button onClick={this.reset}>초기화 버튼</button>
+        <button onClick={() => this.reset(0)}>초기화 버튼</button>
       </div>
     )
   }
