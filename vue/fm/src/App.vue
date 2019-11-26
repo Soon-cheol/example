@@ -2,8 +2,12 @@
   <div id="app">
     <h1>2014 월드컵 나라별 포메이션</h1>
     <div id="nav">
-      <router-link to="/Germany"><button>Germany</button></router-link>
-      <router-link to="/France"><button>France</button></router-link>
+      <router-link to="/Germany">
+        <button>Germany</button>
+      </router-link>
+      <router-link to="/France">
+        <button>France</button>
+      </router-link>
     </div>
     <div id="content">
       <div class="infomation">
@@ -17,22 +21,22 @@
 </template>
 
 <script>
-import data from './data'
-import Germany from './components/Germany.vue'
-import France from './components/France.vue'
-import Infomation from './Infomation.vue'
-import eventBus from './eventBus'
-import vueRouter from 'vue-router'
+import data from "./data";
+import Germany from "./components/Germany.vue";
+import France from "./components/France.vue";
+import Infomation from "./Infomation.vue";
+import eventBus from "./eventBus";
+import vueRouter from "vue-router";
 
 const router = new vueRouter({
   routes: [
-    {path: '/Germany', component: Germany},
-    {path: '/France', component: France}
+    { path: "/Germany", component: Germany },
+    { path: "/France", component: France }
   ]
-})
+});
 
 export default {
-  name : 'app',
+  name: "app",
   router,
   components: {
     // Germany,
@@ -40,17 +44,17 @@ export default {
     Infomation
   },
   props: {
-      props: {}
+    props: {}
   },
   watch: {
-    '$route' (to, from) {
-      eventBus.$emit('player-info', 0);
+    $route(to, from) {
+      eventBus.$emit("player-info", 0);
     }
   },
-  data : function() {
-      return {
-          data : data
-      }
-  },
+  data: function() {
+    return {
+      data: data
+    };
+  }
 };
 </script>
