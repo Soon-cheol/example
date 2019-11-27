@@ -1,6 +1,6 @@
 <template>
-  <li class="card">
-    <span :class="[className]" @click="select">{{ value }}</span>
+  <li @click="select">
+    <span :class="[className]">{{ value }}</span>
   </li>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     select(e) {
-      this.$emit("click", e.target.className);
+      this.$emit("click", e.target.childNodes[0].className);
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ul>
-      <card v-for="(c, i) in cardList" :key="i" :props="c.number" @click="select" />
+      <card v-for="(c, i) in cardList" :key="i + 1" :props="c.number" @click="select" />
     </ul>
   </div>
 </template>
@@ -43,12 +43,14 @@ export default {
       for (let i = 1; i < this.data1.length + 1; i++) {
         let name = ".card" + i;
         let nameAll = document.querySelectorAll(name);
-        nameAll[0].classList.add("rotate");
-        nameAll[1].classList.add("rotate");
+        nameAll[0].parentNode.classList.add("rotate");
+        nameAll[1].parentNode.classList.add("rotate");
       }
     },
-    select: function(id) {
-      console.log("부모", id);
+    select: function(c) {
+      if (c !== undefined) {
+        console.log("부모", c);
+      }
     }
   }
 };

@@ -21,7 +21,7 @@ body #app ul {
   padding: 10px 0;
 }
 
-body #app ul .card {
+body #app ul li {
   float: left;
   width: 280px;
   height: 200px;
@@ -31,54 +31,54 @@ body #app ul .card {
   cursor: pointer;
 }
 
-body #app ul .card span {
+body #app ul li.rotate > span {
+  -webkit-transform: rotateY(90deg);
+  -webkit-transition: -webkit-transform .2s;
+}
+
+body #app ul li span {
   display: block;
   width: 100%;
   height: 100%;
   vertical-align: middle;
 }
 
-body #app ul .card span.card1 {
+body #app ul li span.card1 {
   color: #ffbc84;
 }
 
-body #app ul .card span.card2 {
+body #app ul li span.card2 {
   color: #a1f6ff;
 }
 
-body #app ul .card span.card3 {
+body #app ul li span.card3 {
   color: #f5ff6f;
 }
 
-body #app ul .card span.card4 {
+body #app ul li span.card4 {
   color: #00edb4;
 }
 
-body #app ul .card span.card5 {
+body #app ul li span.card5 {
   color: #e900ed;
 }
 
-body #app ul .card span.card6 {
+body #app ul li span.card6 {
   color: #9d00ed;
 }
 
-body #app ul .card span.card7 {
+body #app ul li span.card7 {
   color: #ffbc00;
 }
 
-body #app ul .card span.card8 {
+body #app ul li span.card8 {
   color: #fff;
 }
 
-body #app ul .card span.card9 {
+body #app ul li span.card9 {
   color: #72ff97;
 }
 
-body #app ul .card span.card10 {
+body #app ul li span.card10 {
   color: #ff7b7b;
-}
-
-body #app ul .card span.rotate {
-  -webkit-transform: rotateY(90deg);
-  -webkit-transition: -webkit-transform .2s;
 }
