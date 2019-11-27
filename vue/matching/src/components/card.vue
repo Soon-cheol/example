@@ -1,6 +1,6 @@
 <template>
-  <li :class="{ card }">
-    <span>{{ value }}</span>
+  <li class="card">
+    <span :class="[className]" @click="select">{{ value }}</span>
   </li>
 </template>
 
@@ -11,8 +11,13 @@ export default {
   data: function() {
     return {
       value: this.props,
-      card: 1231
+      className: "card" + this.props
     };
+  },
+  methods: {
+    select(e) {
+      this.$emit("click", e.target.className);
+    }
   }
 };
 </script>

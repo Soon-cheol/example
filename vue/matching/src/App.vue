@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <ul>
-      <card v-for="(c, i) in cardList" :key="i" :props="c.number" />
+      <card v-for="(c, i) in cardList" :key="i" :props="c.number" @click="select" />
     </ul>
   </div>
 </template>
 
 <script>
-import data1 from "./data";
-import data2 from "./data";
+import data from "./data";
+// import data2 from "./data";
 import card from "./components/card";
 
 export default {
@@ -18,14 +18,17 @@ export default {
   },
   data: function() {
     return {
-      cardList: null
+      cardList: null,
+      data1: data,
+      data2: data
     };
   },
   created: function() {
-    this.shuffle(data1, data2);
+    this.shuffle(this.data1, this.data2);
+    setTimeout(this.gameStart, 3000);
   },
   methods: {
-    shuffle(data1, data2) {
+    shuffle: function(data1, data2) {
       let arr = data1.concat(data2);
       var j, x, i;
       for (i = arr.length; i; i -= 1) {
@@ -35,6 +38,17 @@ export default {
         arr[j] = x;
       }
       this.cardList = arr;
+    },
+    gameStart: function() {
+      for (let i = 1; i < this.data1.length + 1; i++) {
+        let name = ".card" + i;
+        let nameAll = document.querySelectorAll(name);
+        nameAll[0].classList.add("rotate");
+        nameAll[1].classList.add("rotate");
+      }
+    },
+    select: function(id) {
+      console.log("부모", id);
     }
   }
 };

@@ -22,18 +22,65 @@ body {
 
             .card {
                 float: left;
-                display: table;
-                width: 240px;
-                height: 140px;
-                padding: 10px 20px;
-                // font-size: 38px;
-                font-size: 0;
+                width: 280px;
+                height: 200px;
+                border: 1px solid #4c4c4c;
+                font-size: 38px;
+                line-height: 200px;
+                cursor: pointer;
+                // font-size: 0;
 
                 span {
-                    display: table-cell;
+                    &.card1 {
+                        color: #ffbc84;
+                    }
+
+                    &.card2 {
+                        color: #a1f6ff;
+                    }
+
+                    &.card3 {
+                        color: #f5ff6f;
+                    }
+
+                    &.card4 {
+                        color: #00edb4;
+                    }
+
+                    &.card5 {
+                        color: #e900ed;
+                    }
+
+                    &.card6 {
+                        color: #9d00ed;
+                    }
+
+                    &.card7 {
+                        color: #ffbc00;
+                    }
+
+                    &.card8 {
+                        color: #fff;
+                    }
+
+                    &.card9 {
+                        color: #72ff97;
+                    }
+
+                    &.card10 {
+                        color: #ff7b7b;
+                    }
+
+                    display: block;
                     width: 100%;
                     height: 100%;
                     vertical-align: middle;
+
+                    &.rotate {
+                        -webkit-transform: rotateY(90deg);
+                        // -webkit-transform: rotateY(450deg);
+                        -webkit-transition: -webkit-transform .2s;
+                    }
                 }
             }
         }

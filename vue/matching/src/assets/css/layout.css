@@ -23,16 +23,62 @@ body #app ul {
 
 body #app ul .card {
   float: left;
-  display: table;
-  width: 240px;
-  height: 140px;
-  padding: 10px 20px;
-  font-size: 0;
+  width: 280px;
+  height: 200px;
+  border: 1px solid #4c4c4c;
+  font-size: 38px;
+  line-height: 200px;
+  cursor: pointer;
 }
 
 body #app ul .card span {
-  display: table-cell;
+  display: block;
   width: 100%;
   height: 100%;
   vertical-align: middle;
+}
+
+body #app ul .card span.card1 {
+  color: #ffbc84;
+}
+
+body #app ul .card span.card2 {
+  color: #a1f6ff;
+}
+
+body #app ul .card span.card3 {
+  color: #f5ff6f;
+}
+
+body #app ul .card span.card4 {
+  color: #00edb4;
+}
+
+body #app ul .card span.card5 {
+  color: #e900ed;
+}
+
+body #app ul .card span.card6 {
+  color: #9d00ed;
+}
+
+body #app ul .card span.card7 {
+  color: #ffbc00;
+}
+
+body #app ul .card span.card8 {
+  color: #fff;
+}
+
+body #app ul .card span.card9 {
+  color: #72ff97;
+}
+
+body #app ul .card span.card10 {
+  color: #ff7b7b;
+}
+
+body #app ul .card span.rotate {
+  -webkit-transform: rotateY(90deg);
+  -webkit-transition: -webkit-transform .2s;
 }
