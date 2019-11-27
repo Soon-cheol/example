@@ -20,28 +20,20 @@ export default {
     return {
       cardList: null,
       data1: data,
-      data2: { ...data, id: data.id + 10 }
+      data2: null
     };
   },
   created: function() {
-    // this.data2 = this.duplicate(this.data1);
-    // console.log(this.data2);
+    this.data2 = this.data1.map(item => {
+      return {
+        ...item,
+        id: item.id + 10
+      };
+    });
     this.shuffle(this.data1, this.data2);
-    console.log(this.data2);
     setTimeout(this.gameStart, 3000);
   },
   methods: {
-    // duplicate: function(param) {
-    //   // const dup = { number: this.data1.number, id: this.data1.id + 10 };
-    //   // return dup;
-    //   const dup = (arr, ...param) => {
-    //     for (let d of data) {
-    //       console.log("d", d);
-    //     }
-    //   };
-    //   console.log("dup", dup);
-    //   return this.data1;
-    // },
     shuffle: function(data1, data2) {
       let arr = data1.concat(data2);
       var j, x, i;
