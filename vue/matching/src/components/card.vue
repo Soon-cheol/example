@@ -1,6 +1,9 @@
 <template>
-  <li @click="select">
-    <span :class="[className]">{{ value }}</span>
+  <li>
+    <div class="card" @click="select">
+      <span :class="[className]">{{ value }}</span>
+    </div>
+    <div class="mask" onClick="alert('완료된 카드입니다.')"></div>
   </li>
 </template>
 
@@ -16,7 +19,7 @@ export default {
   },
   methods: {
     select(e) {
-      this.$emit("click", e.target.childNodes[0].className);
+      this.$emit("click", e.target);
     }
   }
 };
