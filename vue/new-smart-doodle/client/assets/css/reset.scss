@@ -1,0 +1,243 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'NanumSquare';
+  font-weight: 400;
+  src: url(~assets/fonts/NanumSquare/NanumSquareR.eot);
+  src: url(~assets/fonts/NanumSquare/NanumSquareR.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquare/NanumSquareR.woff) format('woff'),
+    url(~assets/fonts/NanumSquare/NanumSquareR.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquare';
+  font-weight: 700;
+  src: url(~assets/fonts/NanumSquare/NanumSquareB.eot);
+  src: url(~assets/fonts/NanumSquare/NanumSquareB.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquare/NanumSquareB.woff) format('woff'),
+    url(~assets/fonts/NanumSquare/NanumSquareB.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquare';
+  font-weight: 800;
+  src: url(~assets/fonts/NanumSquare/NanumSquareEB.eot);
+  src: url(~assets/fonts/NanumSquare/NanumSquareEB.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquare/NanumSquareEB.woff) format('woff'),
+    url(~assets/fonts/NanumSquare/NanumSquareEB.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquare';
+  font-weight: 300;
+  src: url(~assets/fonts/NanumSquare/NanumSquareL.eot);
+  src: url(~assets/fonts/NanumSquare/NanumSquareL.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquare/NanumSquareL.woff) format('woff'),
+    url(~assets/fonts/NanumSquare/NanumSquareL.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NanumSquareRound';
+  font-weight: 400;
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundR.eot);
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundR.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundR.woff) format('woff'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundR.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquareRound';
+  font-weight: 700;
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundB.eot);
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundB.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundB.woff) format('woff'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundB.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquareRound';
+  font-weight: 800;
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundEB.eot);
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundEB.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundEB.woff) format('woff'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundEB.ttf)
+      format('truetype');
+}
+@font-face {
+  font-family: 'NanumSquareRound';
+  font-weight: 300;
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundL.eot);
+  src: url(~assets/fonts/NanumSquareRound/NanumSquareRoundL.eot?#iefix)
+      format('embedded-opentype'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundL.woff) format('woff'),
+    url(~assets/fonts/NanumSquareRound/NanumSquareRoundL.ttf) format('truetype');
+}
+
+$mainFont: 'NanumSquareRound';
+
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+  -ms-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: $mainFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #333;
+}
+
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  font-size: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+// caption,
+// legend {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   margin: -1px;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   border: 0;
+// }
+
+select,
+input,
+textarea {
+  color: #454545;
+  font-size: 1.6rem;
+  font-family: $mainFont;
+}
+
+select,
+input {
+  vertical-align: middle;
+}
+input[type='password'] {
+  font-family: sans-serif;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+address,
+em,
+i {
+  font-style: normal;
+}
+
+button {
+  border: 0 none;
+  outline: 0 none;
+  background: none;
+  font-family: $mainFont, sans-serif;
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+figure,
+figcaption {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input[type='text'],
+input[type='number'] {
+  padding: 2px 5px;
+}
+
+input[type='submit'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+header,
+footer,
+article,
+section,
+aside,
+nav,
+main {
+  display: block;
+}
+
+// button,input,optgroup,select,textarea { font-family: inherit; font-size: inherit; font-weight:inherit; margin: 0;}
+input {
+  font-weight: 200;
+}
+
+[lang='en'] {
+  font-family: 'Roboto', sans-serif;
+}
+
+.hidden {
+  display: none !important;
+}
