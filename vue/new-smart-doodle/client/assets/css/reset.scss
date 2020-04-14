@@ -154,7 +154,7 @@ table {
 select,
 input,
 textarea {
-  color: #454545;
+  color: #333;
   font-size: 1.6rem;
   font-family: $mainFont;
 }
@@ -236,7 +236,14 @@ nav,
 main {
   display: block;
 }
-
+input:focus,
+button {
+  outline: none;
+}
+button {
+  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+}
 // button,input,optgroup,select,textarea { font-family: inherit; font-size: inherit; font-weight:inherit; margin: 0;}
 input {
   font-weight: 200;
