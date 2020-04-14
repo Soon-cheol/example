@@ -3,13 +3,13 @@
     <h1>
       <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
     </h1>
-    <p class="txt-login">로그인</p>
+    <p class="txt-title">로그인</p>
     <div ref="step" class="step">
       <div class="step01">
         <input type="text" placeholder="아이디" />
         <n-link to="#" class="txt-forget">아이디를 잊으셨나요?</n-link>
         <div class="option">
-          <button>계정 만들기</button>
+          <n-link to="/user/terms">계정 만들기</n-link>
           <button @click="goStep02">다음</button>
         </div>
       </div>
@@ -95,7 +95,7 @@ a {
     margin-top: 20px;
     font-size: 20px;
   }
-  .txt-login {
+  .txt-title {
     margin-top: 16px;
     font-size: 26px;
   }
@@ -109,7 +109,9 @@ a {
   .option {
     overflow: hidden;
     margin-top: 40px;
+    a,
     button {
+      display: block;
       padding: 10px 20px;
       border-radius: 4px;
       font-size: 16px;

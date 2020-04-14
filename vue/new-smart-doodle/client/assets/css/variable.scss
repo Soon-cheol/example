@@ -1,11 +1,11 @@
-$mainColor: #27bfd2;
+$defaultColor: #333; // 기본값
+$whiteColor: #fff; // 흰색
+$mainColor: #27bfd2; // 메인컬러
 $mainActiveColor: #27d2c2;
-$subColor01: #ff7d84;
+$subColor01: #ff7d84; // 서브컬러
 $subActiveColor01: #fb547b;
-$subColor02: #69b342;
-$defaultColor: #333;
-$inputColor: #dfdfdf;
-$whiteColor: #fff;
+$disableColor: #a5a5a5; // 비활성화
+$inputColor: #dfdfdf; // 인풋 보더
 
-$desktopSize: '1280px';
-$mobileSize: '860px';
+$desktopSize: '1280px'; // 반응형 데스크탑 기준
+$mobileSize: '860px'; // 반응형 모바일 기준
