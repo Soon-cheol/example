@@ -1,22 +1,20 @@
-$mainColor: #2fb0c0;
-$defaultColor: #333;
+@import './variable';
+@import './header';
 // 데스크탑
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: $desktopSize) {
   html {
     font-size: 20px;
   }
 }
 // 태블릿
-@media screen and (max-width: 1280px) and (min-width: 801px) {
+@media screen and (max-width: $desktopSize) and (min-width: $mobileSize) {
   html {
     font-size: 18px;
   }
 }
 // 모바일
-@media screen and (max-width: 800px) {
+@media screen and (max-width: $mobileSize) {
   html {
     font-size: 14px;
   }
 }
-
-@import './header';

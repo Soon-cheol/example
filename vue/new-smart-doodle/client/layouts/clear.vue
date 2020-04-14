@@ -1,8 +1,5 @@
 <template>
   <div id="wrap">
-    <h1>
-      <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
-    </h1>
     <div id="contants">
       <nuxt />
     </div>
@@ -17,7 +14,14 @@ export default {
 
 <style lang="scss" scoped>
 #wrap {
-  width: 100%;
-  text-align: center;
+  #contants {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: table;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
 }
 </style>

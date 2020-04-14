@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 @font-face {
   font-family: 'NanumSquare';
   font-weight: 400;
@@ -168,7 +166,17 @@ input {
 input[type='password'] {
   font-family: sans-serif;
 }
-
+::-webkit-input-placeholder {
+  /* Edge */
+  color: #adadad;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #adadad;
+}
+::placeholder {
+  color: #adadad;
+}
 b,
 strong {
   font-weight: 700;

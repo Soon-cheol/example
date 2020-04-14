@@ -46,8 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$mainColor: #2fb0c0;
-$defaultColor: #333;
+@import '~assets/css/variable';
 .container {
   .section {
     background: #dfdfdf;

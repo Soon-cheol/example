@@ -1,5 +1,4 @@
-$mainColor: #2fb0c0;
-$defaultColor: #333;
+@import './variable';
 #wrap {
   width: 100%;
   text-align: center;
@@ -16,11 +15,6 @@ $defaultColor: #333;
       display: table;
       width: 100%;
       margin: 0 auto;
-      padding: 0 30px;
-      & > * {
-        display: table-cell;
-        vertical-align: middle;
-      }
       .size {
         position: fixed;
         top: 10px;
@@ -30,15 +24,11 @@ $defaultColor: #333;
       h1 {
         img {
           width: 100%;
-          margin: 20px 0;
         }
       }
       ul {
         overflow: hidden;
         text-align: center;
-        li {
-          display: inline-block;
-        }
       }
       .g-menu {
         li {
@@ -73,71 +63,104 @@ $defaultColor: #333;
   }
 }
 // 데스크탑
-@media screen and (min-width: 1281px) {
+@media screen and (min-width: $desktopSize + 1) {
   #header {
     height: 104px;
     .gnb {
       max-width: 1660px;
+      padding: 0 30px;
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
+      }
       .size::before {
         content: '데스크탑';
       }
       h1 {
         width: 130px;
+        img {
+          margin: 20px 0;
+        }
       }
       .g-menu {
         li {
+          display: inline-block;
           width: 300px;
         }
       }
       .m-menu {
         width: 200px;
       }
+      .r-menu {
+        display: none;
+      }
     }
   }
 }
 // 태블릿
-@media screen and (max-width: 1280px) and (min-width: 861px) {
+@media screen and (max-width: $desktopSize) and (min-width: $mobileSize + 1) {
   #header {
     height: 95px;
     .gnb {
+      padding: 0 30px;
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
+      }
       .size::before {
         content: '태블릿';
       }
       h1 {
         width: 150px;
         padding-right: 40px;
+        img {
+          margin: 20px 0;
+        }
       }
       .g-menu {
-        display: table;
+        overflow: hidden;
         li {
-          display: table-cell;
-          padding: 0 20px;
+          float: left;
+          width: 50%;
+          text-align: center;
         }
       }
       .m-menu {
         width: 200px;
+      }
+      .r-menu {
+        display: none;
       }
     }
   }
 }
 // 모바일
-@media screen and (max-width: 860px) {
+@media screen and (max-width: $mobileSize) {
   #header {
-    height: 104px;
+    height: 60px;
     .gnb {
+      padding: 0 2%;
       .size::before {
         content: '모바일';
       }
       h1 {
-        width: 130px;
-      }
-      .g-menu {
-        li {
-          width: 300px;
+        width: 80px;
+        img {
+          margin: 10px 0;
         }
       }
+      .g-menu,
       .m-menu {
-        width: 200px;
+        display: none;
+      }
+      .r-menu {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 80px;
+        height: 60px;
+        background: url(~assets/images/btn_lnb.png) no-repeat center center;
+        background-size: 40% auto;
       }
     }
   }
