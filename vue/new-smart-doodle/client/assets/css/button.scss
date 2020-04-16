@@ -1,0 +1,23 @@
+@import './variable';
+.setBtn {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.setBtn01 {
+  background: $mainColor;
+  color: $whiteColor;
+  &:hover {
+    background: $mainActiveColor;
+    color: $whiteColor;
+  }
+}
+.setBtn02 {
+  background: $subColor01;
+  color: $whiteColor;
+  &:hover {
+    background: $subActiveColor01;
+    color: $whiteColor;
+  }
+}

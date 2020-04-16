@@ -3,23 +3,23 @@
     <h1>
       <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
     </h1>
-    <p class="txt-title">로그인</p>
+    <h2 class="txt-title">로그인</h2>
     <div ref="step" class="step">
-      <div class="step01">
+      <div>
         <input type="text" placeholder="아이디" />
         <n-link to="#" class="txt-forget">아이디를 잊으셨나요?</n-link>
         <div class="option">
-          <n-link to="/user/terms">계정 만들기</n-link>
-          <button @click="goStep02">다음</button>
+          <n-link to="/user/terms" class="setBtn setBtn01">계정 만들기</n-link>
+          <button class="setBtn setBtn02" @click="goStep02">다음</button>
         </div>
       </div>
-      <div class="step02">
+      <div>
         <span class="txt-id">{{ loginId }}</span>
         <input type="password" placeholder="비밀번호 입력" />
         <n-link to="#" class="txt-forget">비밀번호를 잊으셨나요?</n-link>
         <div class="option">
-          <button @click="goStep01">취소</button>
-          <button>다음</button>
+          <button class="setBtn setBtn01" @click="goStep01">취소</button>
+          <button class="setBtn setBtn02">다음</button>
         </div>
       </div>
     </div>
@@ -33,13 +33,12 @@ export default {
       loginId: 'lasertank2'
     }
   },
-  mounted() {},
   methods: {
     goStep01() {
-      this.$refs.step.classList.remove('pwd')
+      this.$refs.step.classList.remove('step02')
     },
     goStep02() {
-      this.$refs.step.classList.add('pwd')
+      this.$refs.step.classList.add('step02')
     }
   }
 }
@@ -55,7 +54,7 @@ h1 {
 input[type='text'],
 input[type='password'] {
   width: 100%;
-  margin-top: 14px;
+  margin-top: 24px;
   border: 2px solid $inputColor;
   font-size: 16px;
   padding: 12px 14px;
@@ -64,72 +63,70 @@ input[type='password'] {
     border: 2px solid $subActiveColor01;
   }
 }
-a {
-  &:hover {
-    color: $mainColor;
+.txt-id {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.txt-title {
+  margin-top: 16px;
+  font-size: 26px;
+}
+.txt-forget {
+  display: block;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+}
+.option {
+  overflow: hidden;
+  margin-top: 40px;
+  *:first-child {
+    float: left;
+  }
+  *:last-child {
+    float: right;
   }
 }
-.login {
-  overflow: hidden;
-  position: relative;
-  height: 350px;
-  .step {
-    position: absolute;
-    width: 800px;
-    left: 0;
-    transition: left 0.4s;
-    -webkit-transition: left 0.4s;
-    &.pwd {
-      left: -448px;
-    }
-    & > div {
-      float: left;
-      width: 348px;
-      & + div {
-        margin-left: 100px;
-      }
-    }
-  }
-  .txt-id {
-    display: block;
-    margin-top: 20px;
-    font-size: 20px;
-  }
-  .txt-title {
-    margin-top: 16px;
-    font-size: 26px;
-  }
-  .txt-forget {
-    display: block;
-    margin-top: 18px;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: left;
-  }
-  .option {
+@media screen and (min-width: 451px) {
+  .login {
     overflow: hidden;
-    margin-top: 40px;
-    a,
-    button {
-      display: block;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-    *:first-child {
-      float: left;
-      background: $mainColor;
-      color: $whiteColor;
-      &:hover {
-        background: $mainActiveColor;
+    position: relative;
+    height: 350px;
+    .step {
+      position: absolute;
+      width: 800px;
+      left: 0;
+      transition: left 0.4s;
+      -webkit-transition: left 0.4s;
+      &.step02 {
+        left: -448px;
+      }
+      & > div {
+        float: left;
+        width: 348px;
+        & + div {
+          margin-left: 100px;
+        }
       }
     }
-    *:last-child {
-      float: right;
-      background: $subColor01;
-      color: $whiteColor;
-      &:hover {
-        background: $subActiveColor01;
+  }
+}
+@media screen and (max-width: 450px) {
+  .step {
+    & > div:first-child {
+      display: block;
+    }
+    & > div:last-child {
+      display: none;
+    }
+    &.step02 {
+      & > div:first-child {
+        display: none;
+      }
+      & > div:last-child {
+        display: block;
       }
     }
   }
