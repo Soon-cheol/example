@@ -4,8 +4,11 @@
       <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
     </h1>
     <p class="txt-title">약관동의</p>
-    <ul>
-      <li v-for="t in result" :key="t.trmsSeqno">
+    <p class="txt-all-check" @click="allCheck">
+      <Checkbox :terms="allAgree" />
+    </p>
+    <ul class="terms-list">
+      <li v-for="t in termsList" :key="t.trmsSeqno" @click="listCheck">
         <Checkbox :terms="t" />
       </li>
     </ul>
@@ -13,56 +16,66 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Checkbox from '~/components/checkbox'
 export default {
   layout: 'clear',
   components: {
     Checkbox
   },
+  async asyncData({ store }) {
+    await store.dispatch('user/termsGet')
+  },
   data() {
     return {
-      result: [
-        {
-          trmsRvsnSeqno: '1',
-          trmsCd: '001',
-          cdNm: '이용약관',
-          agree: false
-        },
-        {
-          trmsRvsnSeqno: '2',
-          trmsCd: '002',
-          cdNm: '제공동의',
-          agree: false
-        },
-        {
-          trmsRvsnSeqno: '2',
-          trmsCd: '003',
-          cdNm: '취급방침',
-          agree: false
-        },
-        {
-          trmsRvsnSeqno: '1',
-          trmsCd: '004',
-          cdNm: '취급위탁',
-          agree: false
-        },
-        {
-          trmsRvsnSeqno: '1',
-          trmsCd: '005',
-          cdNm: '개인정보수집',
-          agree: false
-        },
-        {
-          trmsRvsnSeqno: '1',
-          trmsCd: '006',
-          cdNm: '할인정책',
-          agree: false
-        }
-      ]
+      aNum: 0,
+      allAgree: {
+        trmsRvsnSeqno: '0',
+        trmsCd: '000',
+        cdNm: '약관에 모두 동의합니다.',
+        agree: false
+      }
     }
   },
-  mounted() {},
-  methods: {}
+  computed: {
+    ...mapState({
+      termsList: (state) => state.user.terms
+    })
+  },
+  // watch: {
+  //   termsList() {
+  //     console.log('list')
+  //     this.list = this.termsList
+  //   }
+  // },
+  methods: {
+    allCheck() {
+      this.allAgree.agree = document.querySelector(
+        '.txt-all-check input'
+      ).checked
+      const sel = document.querySelectorAll('.terms-list input')
+      for (let i = 0; i < sel.length; i++) {
+        if (this.allAgree.agree) {
+          sel[i].checked = true
+          this.aNum = sel.length
+        } else {
+          sel[i].checked = false
+          this.aNum = 0
+        }
+      }
+    },
+    listCheck(e) {
+      this.aNum = 0
+      const all = document.querySelector('.txt-all-check input')
+      const sel = document.querySelectorAll('.terms-list input')
+      for (let i = 0; i < sel.length; i++) {
+        if (sel[i].checked) {
+          this.aNum += 1
+        }
+      }
+      sel.length === this.aNum ? (all.checked = true) : (all.checked = false)
+    }
+  }
 }
 </script>
 
@@ -87,11 +100,28 @@ input[type='password'] {
 }
 .join {
   .txt-title {
-    margin-top: 16px;
+    margin: 16px 0;
     font-size: 26px;
   }
-  .fwCheck {
+  .txt-all-check {
     font-size: 18px;
+    color: $disableColor;
+  }
+  .terms-list {
+    margin: 4px 0 0 7px;
+    li {
+      margin-top: 12px;
+      position: relative;
+      padding-left: 20px;
+      font-size: 18px;
+      color: $disableColor;
+      &::before {
+        position: absolute;
+        content: 'ㄴ';
+        top: 1px;
+        left: 0;
+      }
+    }
   }
 }
 </style>
