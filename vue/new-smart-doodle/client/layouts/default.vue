@@ -4,15 +4,20 @@
     <div id="contants">
       <nuxt />
     </div>
+    <footerComponent />
+    <MGRemocon />
   </div>
 </template>
 
 <script>
 import gnbComponent from '~/components/layouts/gnb.vue'
+import footerComponent from '~/components/layouts/footer.vue'
+// import MGRemocon from '~/components/MGRemocon'
 
 export default {
   components: {
-    gnbComponent
+    gnbComponent,
+    footerComponent
   },
   data() {
     return {}
@@ -26,9 +31,25 @@ export default {
         document.querySelector('#header').setAttribute('style', 'top:0')
       } else if (wheel < 0) {
         // 스크롤 다운
-        document.querySelector('#header').setAttribute('style', 'top:-200px')
+        document.querySelector('#header').setAttribute('style', 'top:-104px')
       }
     })
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#wrap {
+  #contants {
+    width: 100%;
+    margin-top: 150px;
+    text-align: center;
+    .container {
+      width: 100%;
+      max-width: 1600px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}
+</style>
