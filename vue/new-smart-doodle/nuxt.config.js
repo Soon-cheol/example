@@ -148,7 +148,8 @@ module.exports = {
   css: [
     { src: '~assets/css/reset.scss', lang: 'scss' },
     { src: '~assets/css/index.scss', lang: 'scss' },
-    { src: '~assets/css/swiper.css', lang: 'css' } // VueAwesomeSwiper CSS
+    { src: '~assets/css/button.scss', lang: 'scss' },
+    { src: '~assets/css/plugin/swiper.css', lang: 'css' } // VueAwesomeSwiper CSS
   ],
   /*
    ** Style-resources module configuration, 필요한 scss파일에 import해서 사용.
@@ -161,6 +162,7 @@ module.exports = {
    */
   plugins: [
     { src: '~/plugins/vue-awesome-swiper', ssr: false },
+    { src: '~/plugins/vue-fontawesome.js', ssr: true },
     { src: '~/plugins/vue-js-modal', ssr: false },
     { src: '~/plugins/vue-daum-postcode', ssr: false },
     { src: '~/plugins/google-oauth2', ssr: false },
@@ -172,8 +174,13 @@ module.exports = {
    ** Auth module configuration
    */
   router: {
-    // middleware: ['auth', 'route-info', 'study-authenticate', 'browser'],
     middleware: ['auth', 'route-info']
+    // extendRoutes(routes, resolve) {
+    //   routes.push({
+    //     path: '*',
+    //     component: resolve(__dirname, 'client/pages/mew.vue')
+    //   })
+    // }
   },
   auth: {
     redirect: {
