@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="center" @click.stop>
-      <div ref="join" class="join step02">
+      <div ref="join" class="join ">
         <h1>
           <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
         </h1>
@@ -23,60 +23,167 @@
             </div>
           </div>
           <!-- // Step01: 약관동의 -->
-          <!-- Step02: 정보입력 -->
           <div class="info">
             <h2 class="txt-title">정보입력</h2>
-            <div class="input">
-              <input
-                v-model="user.loginId"
-                placeholder="아이디"
-                type="text"
-                minlength="4"
-                maxlength="15"
-                @input="idValidate"
-              />
-              <span class="tit">아이디</span>
+            <!-- Step02: 정보입력 -->
+            <div v-if="!confirm">
+              <div class="input">
+                <input
+                  v-model="user.loginId"
+                  placeholder="아이디"
+                  type="text"
+                  minlength="4"
+                  maxlength="15"
+                  @input="idValidate"
+                />
+                <span class="tit" :class="{ active: idVal.bool }"
+                  >아이디 {{ idVal.text }}</span
+                >
+              </div>
+              <div class="input">
+                <input
+                  v-model="user.memEmlNm"
+                  type="text"
+                  placeholder="이메일"
+                  @input="emailValidate"
+                />
+                <span class="tit" :class="{ active: emailVal.bool }"
+                  >이메일 {{ emailVal.text }}</span
+                >
+              </div>
+              <button
+                ref="btnConfirm"
+                class="setBtn setBtn01 btn-confirm"
+                disabled="disabled"
+                @click="emailConfirm"
+              >
+                인증하기
+              </button>
             </div>
-            <div class="input">
-              <input type="text" />
-              <span class="tit">이메일</span>
+            <!-- // Step02: 정보입력 -->
+            <!-- Step03: 정보입력 -->
+            <div v-if="confirm">
+              <div class="input">
+                <input
+                  class="disabled"
+                  type="text"
+                  disabled="disabled"
+                  readonly="readonly"
+                  :value="user.loginId"
+                />
+                <span class="tit active">가입 아이디</span>
+              </div>
+              <div class="input">
+                <input
+                  class="disabled"
+                  type="text"
+                  disabled="disabled"
+                  readonly="readonly"
+                  :value="user.memEmlNm"
+                />
+                <span class="tit active">가입 이메일</span>
+              </div>
+              <div class="input">
+                <input
+                  v-model="pwdVal1.pwd"
+                  type="password"
+                  minlength="8"
+                  maxlength="20"
+                  placeholder="8~20자"
+                  @input="pwdValidate1"
+                />
+                <span class="tit" :class="{ active: pwdVal1.bool }"
+                  >비밀번호 {{ pwdVal1.text }}</span
+                >
+              </div>
+              <div class="input">
+                <input
+                  ref="pwdVal2"
+                  v-model="pwdVal2.pwd"
+                  type="password"
+                  minlength="8"
+                  maxlength="20"
+                  placeholder="8~20자"
+                  :class="{ disabled: !pwdVal1.bool }"
+                  disabled="disabled"
+                  @input="pwdValidate2"
+                />
+                <span class="tit" :class="{ active: pwdVal2.bool }"
+                  >비밀번호 확인 {{ pwdVal2.text }}</span
+                >
+              </div>
+              <div class="input">
+                <input
+                  v-model="user.memNm"
+                  type="text"
+                  minlength="2"
+                  maxlength="10"
+                  placeholder="이름"
+                />
+                <span class="tit" :class="{ active: user.memNm.length >= 2 }"
+                  >이름</span
+                >
+              </div>
+              <div class="input">
+                <select @change="agencySelect">
+                  <option value="00">선택하세요</option>
+                  <option
+                    v-for="p in phoneAgencyList"
+                    :key="p.index"
+                    :value="p.cd"
+                    >{{ p.cdNm }}</option
+                  >
+                </select>
+                <span class="tit" :class="{ active: phoneAgency.bool }"
+                  >통신사</span
+                >
+              </div>
+              <div class="input phone">
+                <input
+                  v-model="user.mblTelRcgnNo"
+                  type="text"
+                  minlength="3"
+                  maxlength="3"
+                  @keyup="numberOnly('phone1')"
+                />
+                <span class="hypen">-</span>
+                <input
+                  v-model="user.mblTelNatnNo"
+                  type="text"
+                  minlength="3"
+                  maxlength="4"
+                  @keyup="numberOnly('phone2')"
+                />
+                <span class="hypen">-</span>
+                <input
+                  v-model="user.mblTelSeqno"
+                  type="text"
+                  minlength="3"
+                  maxlength="4"
+                  @keyup="numberOnly('phone3')"
+                />
+                <span
+                  class="tit"
+                  :class="{
+                    active:
+                      user.mblTelRcgnNo.length === 3 &&
+                      user.mblTelNatnNo.length >= 3 &&
+                      user.mblTelSeqno.length === 4
+                  }"
+                  >휴대전화번호</span
+                >
+              </div>
+              <button
+                ref="btnJoin"
+                class="setBtn setBtn01 btn-confirm"
+                @click="goJoin"
+              >
+                가입하기
+              </button>
+              <!-- // Step03: 정보입력 -->
             </div>
-            <button class="setBtn setBtn01 btn-confirm" disabled="disabled">
-              인증하기
-            </button>
-            <div class="input">
-              <input type="password" />
-              <span class="tit">비밀번호</span>
-            </div>
-            <div class="input">
-              <input type="password" />
-              <span class="tit">비밀번호 확인</span>
-            </div>
-            <div class="input">
-              <input type="text" />
-              <span class="tit">이름</span>
-            </div>
-            <div class="input">
-              <select>
-                <option>asf</option>
-                <option>asf</option>
-                <option>asf</option>
-              </select>
-              <span class="tit">통신사</span>
-            </div>
-            <div class="input">
-              <span class="tit">휴대전화번호</span>
-              <select>
-                <option>asf</option>
-                <option>asf</option>
-                <option>asf</option>
-              </select>
-            </div>
-            <button class="setBtn setBtn01 btn-confirm" disabled="disabled">
-              가입하기
-            </button>
+            <button class="setBtn setBtn02" @click="goCancle">취소</button>
           </div>
-          <!-- // Step02: 정보입력 -->
         </div>
       </div>
     </div>
@@ -93,38 +200,78 @@ export default {
   },
   async asyncData({ store }) {
     await store.dispatch('user/termsGet')
+    await store.dispatch('user/phoneAgencyGet')
   },
   data() {
     return {
       aNum: 0,
+      confirm: false,
+      idVal: {
+        bool: false,
+        text: ''
+      },
+      emailVal: {
+        bool: false,
+        text: ''
+      },
+      pwdVal1: {
+        pwd: '',
+        text: ': 영문 대/소문자, 숫자, 특수문자 가능',
+        bool: false
+      },
+      pwdVal2: {
+        pwd: '',
+        text: '',
+        bool: false
+      },
       allAgree: {
         trmsRvsnSeqno: '0',
         trmsCd: '000',
         cdNm: '약관에 모두 동의합니다.',
         agree: false
       },
+      phoneAgency: {
+        bool: false
+      },
       user: {
-        loginId: '',
-        email: '',
-        pwd1: '',
-        pwd2: '',
-        memNm: '',
-        mblTelRcgnNo: '',
-        mblTelNatnNo: '',
-        mblTelSeqno: ''
+        loginId: '', // 로그인_ID
+        pwd: '', // 비밀번호
+        memNm: '', // 회원_명
+        memEmlNm: '', // 이메일_주소_명
+        mnoCd: '', // 통신사코드
+        mblTelRcgnNo: '', // 휴대_전화_식별번호
+        mblTelNatnNo: '', // 휴대_전화_국_번호
+        mblTelSeqno: '', // 휴대_전화_일련번호
+        trmsI: [], // 회원가입약관동의정보
+        // 아래부터 현재 안 받는 정보
+        hgrkMemId: '', // 상위_로그인_ID
+        memDivCd: 'G', // 회원_구분_코드
+        acDivCd: 'R', // 계정_구분_코드
+        brthDivCd: '', // 생일_구분_코드
+        memBthYmd: '', // 생년월일
+        sexCd: '', // 성별_코드
+        joinSnsNm: '', // 가입_SNS_명
+        infwSnsCd: '00', // 유입_SNS_코드
+        siteInfwPathCd: '', // 사이트_유입_경로_코드
+        genTelAreaNo: '02', // 일반_전화_지역_번호
+        genTelNatnNo: '111', // 일반_전화_국_번호
+        genTelSeqno: '1111', // 일반_전화_일련번호
+        ag14LsthYn: 'N', // 만14세_미만_여부
+        grdnAgrYn: 'N' // 보호자_동의_여부
       }
     }
   },
   computed: {
     ...mapState({
-      termsList: (state) => state.user.terms
+      termsList: (state) => state.user.terms,
+      phoneAgencyList: (state) => state.user.phoneAgency
     })
   },
+  // updated() {
+  //   console.log('업데이트')
+  // },
   // watch: {
-  //   termsList() {
-  //     console.log('list')
-  //     this.list = this.termsList
-  //   }
+  //   user() {}
   // },
   methods: {
     // 취소
@@ -163,44 +310,226 @@ export default {
     goInfo() {
       const sel = document.querySelectorAll('.terms-list input')
       if (sel.length === this.aNum) {
+        for (let i = 0; i < sel.length; i++) {
+          if (sel[i].checked) {
+            this.user.trmsI.push({
+              trmsRvsnSeqno: this.termsList[i].trmsRvsnSeqno,
+              trmsCd: this.termsList[i].trmsCd
+            })
+          }
+        }
         this.$refs.join.classList.add('step02')
       } else {
         alert('필수 약관에 모두 동의해주세요.')
       }
     },
+    // ------------------- step02 -------------------
     // 아이디 입력할 때마다 벨리데이션 체크
     idValidate(e) {
       this.user.loginId = e.target.value
-      if (e.target.value.length > 3) {
+      if (this.user.loginId.length > 3) {
         const v = /^[a-z0-9_]{0,15}$/
-        if (v.test(e.target.value)) {
+        if (v.test(this.user.loginId)) {
           this.idCheck()
         } else {
-          console.log('영문 소문자와 숫자만 이용해주세요.')
+          this.idVal.text = ': 영문 소문자와 숫자만 이용해주세요.'
+          this.idVal.bool = false
         }
+      } else if (
+        this.user.loginId === '' ||
+        this.user.loginId === null ||
+        this.user.loginId === undefined
+      ) {
+        this.idVal.text = ''
+        this.idVal.bool = false
       } else {
-        console.log('사용할 아이디를 입력하세요. (4글자 이상)')
+        this.idVal.text = ': 사용할 아이디를 입력하세요. (4글자 이상)'
+        this.idVal.bool = false
       }
+      this.confirmValidate()
     },
     // 벨리데이션 체크 통과한 경우 등록된 아이디 중복 체크
-    async idCheck(v) {
+    async idCheck() {
       try {
         const { data } = await this.$axios.post('member/isuse', {
           loginId: this.user.loginId
         })
         if (data.result.memuserCnt === '0') {
           // 중복 아닌 경우
-          console.log('중복 아님')
+          this.idVal.text = ': 사용이 가능한 아이디 입니다.'
+          this.idVal.bool = true
         } else if (data.result.memuserCnt === '1') {
           // 중복인 경우
-          console.log('중복임')
+          this.idVal.text = ': 등록된 아이디 입니다.'
+          this.idVal.bool = false
         } else {
+          this.idVal.text = ': 아이디 중복 체크 오류입니다.'
+          this.idVal.bool = false
           console.log('중복검사 체크 실패')
         }
       } catch (error) {
         console.error(error)
       }
-      // this.useBtnActive()
+      this.confirmValidate()
+    },
+    // 이메일 입력할 때마다 벨리데이션 체크
+    emailValidate(e) {
+      this.user.memEmlNm = e.target.value
+      // eslint-disable-next-line no-useless-escape
+      const v = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{0,3}$/i
+      if (v.test(this.user.memEmlNm)) {
+        this.emailCheck()
+      } else if (
+        this.user.memEmlNm === '' ||
+        this.user.memEmlNm === null ||
+        this.user.memEmlNm === undefined
+      ) {
+        this.emailVal.text = ''
+        this.emailVal.bool = false
+      } else {
+        this.emailVal.text = ': e-mail 형식이 올바르지 않습니다.'
+        this.emailVal.bool = false
+      }
+      this.confirmValidate()
+    },
+    // 벨리데이션 체크 통과한 경우 등록된 이메일 중복 체크
+    async emailCheck() {
+      try {
+        const { data } = await this.$axios.post('member/isemailuse', {
+          memEmlNm: this.user.memEmlNm
+        })
+        if (data.result.memEmailUserCnt === '0') {
+          this.emailVal.text = ': 인증이 가능한 e-mail 형식입니다.'
+          this.emailVal.bool = true
+        } else if (data.result.memEmailUserCnt === '1') {
+          this.emailVal.text = ': 사용중인 이메일 입니다.'
+          this.emailVal.bool = false
+        } else {
+          console.log('이메일 중복검사 체크 실패')
+        }
+      } catch (error) {
+        console.error(error)
+      }
+      this.confirmValidate()
+    },
+    // 이메일 인증 활성화
+    confirmValidate() {
+      if (this.idVal.bool && this.emailVal.bool) {
+        this.$refs.btnConfirm.removeAttribute('disabled')
+      } else {
+        this.$refs.btnConfirm.setAttribute('disabled', 'disabled')
+      }
+    },
+    // 이메일 인증 진행
+    emailConfirm() {
+      this.$refs.join.classList.add('confirm')
+      // 인증 성공 시
+      this.confirm = true
+    },
+    // ------------------- step03 -------------------
+    // 비번 밸리 체크 후 -> 비번 확인 활성화
+    pwdValidate1(e) {
+      this.pwdVal1.pwd = e.target.value
+      if (this.pwdVal1.pwd.length > 8) {
+        this.pwdVal1.text = ': 사용 가능한 비밀번호 입니다.'
+        this.pwdVal1.bool = true
+        this.$refs.pwdVal2.removeAttribute('disabled')
+      } else {
+        this.pwdVal1.text = ': 영문 대/소문자, 숫자, 특수문자 가능'
+        this.pwdVal2.text = ''
+        this.pwdVal1.bool = false
+        this.pwdVal2.bool = false
+        this.$refs.pwdVal2.setAttribute('disabled', 'disabled')
+        this.pwdVal2.pwd = ''
+        this.user.pwd = ''
+      }
+      // const v = /^(?=.*[a-zA-Z])(?=.* [^a-zA-Z0-9])(?=.*[0-9]).{8,20}$/
+      // v.test(this.pwdVal1.pwd)
+      //   ? (this.pwdVal1.text = ': 사용 가능한 비밀번호 입니다.')
+      //   : (this.pwdVal1.text = ': 영문 대/소문자, 숫자, 특수문자 가능')
+    },
+    // 비번 확인과 비번 비교
+    pwdValidate2(e) {
+      if (this.pwdVal2.pwd === this.pwdVal1.pwd) {
+        this.pwdVal2.text = ': 비밀번호가 일치합니다.'
+        this.pwdVal2.bool = true
+        this.user.pwd = this.pwdVal1.pwd
+      } else {
+        this.pwdVal2.text = ': 비밀번호가 일치하지 않습니다.'
+        this.pwdVal2.bool = false
+        this.user.pwd = ''
+      }
+    },
+    // nameValidate(e) {
+    //   if (e.target.value.length >= 2) this.user.memNm = e.target.value
+    // },
+    // 통신사 선택
+    agencySelect(e) {
+      this.user.mnoCd = e.target.value
+      this.user.mnoCd === '00'
+        ? (this.phoneAgency.bool = false)
+        : (this.phoneAgency.bool = true)
+    },
+    // 전화번호 입력 숫자만
+    numberOnly(txt) {
+      const v = /^[0-9]+$/
+      if (txt === 'phone1') {
+        if (!v.test(this.user.mblTelRcgnNo)) {
+          this.user.mblTelRcgnNo = ''
+        }
+      } else if (txt === 'phone2') {
+        if (!v.test(this.user.mblTelNatnNo)) {
+          this.user.mblTelNatnNo = ''
+        }
+      } else if (txt === 'phone3') {
+        if (!v.test(this.user.mblTelSeqno)) {
+          this.user.mblTelSeqno = ''
+        }
+      }
+    },
+    // 가입하기
+    goJoin() {
+      if (this.user.trmsI.length <= 0) {
+        alert('가입을 다시 진행해주세요.')
+        console.log('약관동의 오류')
+        this.$router.push('/join')
+        return
+      }
+      if (
+        this.user.memNm === '' ||
+        this.user.memNm === undefined ||
+        this.user.memNm === null
+      ) {
+        alert('이름을 입력해주세요.')
+        return
+      }
+      if (
+        this.user.pwd === '' ||
+        this.user.pwd === undefined ||
+        this.user.pwd === null
+      ) {
+        alert('비밀번호를 입력해주세요.')
+        return
+      }
+      if (this.user.mnoCd === '00') {
+        alert('통신사를 선택해주세요.')
+        return
+      }
+      if (
+        this.user.mblTelRcgnNo === '' ||
+        this.user.mblTelRcgnNo === undefined ||
+        this.user.mblTelRcgnNo === null ||
+        this.user.mblTelNatnNo === '' ||
+        this.user.mblTelNatnNo === undefined ||
+        this.user.mblTelNatnNo === null ||
+        this.user.mblTelSeqno === '' ||
+        this.user.mblTelSeqno === undefined ||
+        this.user.mblTelSeqno === null
+      ) {
+        alert('전화번호를 입력해주세요.')
+        return
+      }
+      alert('회원가입이 완료 되었습니다.')
     }
   }
 }
@@ -208,6 +537,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/variable';
+$activeColor: #3bad00;
 h1 {
   img {
     width: 100px;
@@ -217,6 +547,7 @@ input[type='text'],
 input[type='password'],
 select {
   width: 100%;
+  background: #fff;
   margin-top: 14px;
   border: 2px solid $inputColor;
   font-size: 16px;
@@ -269,13 +600,32 @@ select {
         top: 7px;
         left: 14px;
         font-size: 14px;
+        color: $subActiveColor01;
         z-index: 1;
+        &.active {
+          color: $activeColor;
+        }
       }
       & + .input {
         margin-top: 10px;
       }
+      input.disabled {
+        background: #f3f3f3;
+      }
     }
-    .btn-confirm {
+    .phone {
+      display: table;
+      margin-bottom: 20px;
+      & > * {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+      }
+      .hypen {
+        padding: 14px 6px 0;
+      }
+    }
+    button {
       width: 100%;
       margin: 10px 0;
       padding: 14px 20px;
@@ -301,6 +651,7 @@ select {
     .center {
       width: 100%;
       max-width: $loginSize;
+      max-height: 80%;
       margin: 0 auto;
       padding: 50px;
       border: 1px solid #dadce0;
@@ -322,12 +673,17 @@ select {
             float: left;
             width: 348px;
             & + div {
+              overflow-y: auto;
+              height: 100%;
+              max-height: 64vh;
               margin-left: 100px;
             }
           }
         }
         &.step02 {
-          height: 718px;
+          &.confirm {
+            height: 72vh;
+          }
           .step {
             left: -448px;
           }

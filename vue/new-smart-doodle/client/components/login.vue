@@ -12,8 +12,8 @@
             <input type="text" placeholder="아이디" />
             <n-link to="#" class="txt-forget">아이디를 잊으셨나요?</n-link>
             <div class="option">
-              <n-link to="/join" class="setBtn setBtn01">계정 만들기</n-link>
-              <button class="setBtn setBtn02" @click="goStep02">다음</button>
+              <n-link to="/join" class="setBtn setBtn02">계정 만들기</n-link>
+              <button class="setBtn setBtn01" @click="goStep02">다음</button>
             </div>
           </div>
           <!-- // Step01: 아이디 입력 -->
@@ -23,8 +23,8 @@
             <input type="password" placeholder="비밀번호 입력" />
             <n-link to="#" class="txt-forget">비밀번호를 잊으셨나요?</n-link>
             <div class="option">
-              <button class="setBtn setBtn01" @click="goStep01">취소</button>
-              <button class="setBtn setBtn02">다음</button>
+              <button class="setBtn setBtn02" @click="goStep01">취소</button>
+              <button class="setBtn setBtn01">다음</button>
             </div>
           </div>
           <!-- // Step02: 비밀번호 입력 -->
