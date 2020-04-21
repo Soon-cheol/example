@@ -15,6 +15,18 @@ export const mutations = {
 }
 
 export const actions = {
+  // 로그인
+  login({ state, dispatch }, user) {
+    return this.$auth.loginWith('local', {
+      data: user
+    })
+  },
+  fetchUser() {
+    return this.$auth.fetchUser()
+  },
+  logout() {
+    return this.$auth.logout()
+  },
   // 약관가져오기
   async termsGet({ commit }, user) {
     console.log('data')

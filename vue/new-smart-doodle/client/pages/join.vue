@@ -15,11 +15,19 @@
             <ul class="terms-list">
               <li v-for="t in termsList" :key="t.trmsSeqno" @click="listCheck">
                 <Checkbox :terms="t" />
+                <button>보기</button>
               </li>
             </ul>
             <div class="option">
-              <button class="setBtn setBtn02" @click="goCancle">취소</button>
-              <button class="setBtn setBtn01" @click="goInfo">다음</button>
+              <button class="setBtn setBtn02" @click="goCancel">취소</button>
+              <button
+                ref="btnTerms"
+                class="setBtn setBtn01"
+                disabled="disabled"
+                @click="goInfo"
+              >
+                다음
+              </button>
             </div>
           </div>
           <!-- // Step01: 약관동의 -->
@@ -90,6 +98,7 @@
             </div>
             <!-- Step03: 정보입력 -->
             <div v-if="confirm">
+              <h2 class="txt-title">정보입력</h2>
               <div class="input">
                 <input
                   class="disabled"
@@ -209,7 +218,7 @@
               </button>
               <!-- // Step03: 정보입력 -->
             </div>
-            <button class="setBtn setBtn02" @click="goCancle">
+            <button class="setBtn setBtn02" @click="goCancel">
               회원가입 취소
             </button>
           </div>
@@ -285,10 +294,10 @@ export default {
         bool: false
       },
       user: {
-        loginId: 'lasertank', // 로그인_ID
+        loginId: '', // 로그인_ID
         pwd: '', // 비밀번호
         memNm: '', // 회원_명
-        memEmlNm: 'sooncheolchoi7@gmail.com', // 이메일_주소_명
+        memEmlNm: '', // 이메일_주소_명
         mnoCd: '', // 통신사코드
         mblTelRcgnNo: '', // 휴대_전화_식별번호
         mblTelNatnNo: '', // 휴대_전화_국_번호
@@ -326,9 +335,10 @@ export default {
   // },
   methods: {
     // 취소
-    goCancle() {
+    goCancel() {
       this.$router.push('/user')
     },
+    // ------------------- step01 -------------------
     // 약관 모두 동의
     allCheck() {
       this.allAgree.agree = document.querySelector(
@@ -339,9 +349,11 @@ export default {
         if (this.allAgree.agree) {
           sel[i].checked = true
           this.aNum = sel.length
+          this.$refs.btnTerms.removeAttribute('disabled')
         } else {
           sel[i].checked = false
           this.aNum = 0
+          this.$refs.btnTerms.setAttribute('disabled', 'disabled')
         }
       }
     },
@@ -355,7 +367,14 @@ export default {
           this.aNum += 1
         }
       }
-      sel.length === this.aNum ? (all.checked = true) : (all.checked = false)
+      // sel.length === this.aNum ? (all.checked = true) : (all.checked = false)
+      if (sel.length === this.aNum) {
+        this.$refs.btnTerms.removeAttribute('disabled')
+        all.checked = true
+      } else {
+        this.$refs.btnTerms.setAttribute('disabled', 'disabled')
+        all.checked = false
+      }
     },
     // 약관동의 -> 정보입력 벨리데이션 체크
     goInfo() {
@@ -371,8 +390,8 @@ export default {
         }
         this.$refs.join.classList.add('step02')
         this.$refs.join.classList.remove('step03')
-      } else {
-        alert('필수 약관에 모두 동의해주세요.')
+        // } else {
+        //   alert('필수 약관에 모두 동의해주세요.')
       }
     },
     // ------------------- step02 -------------------
@@ -517,6 +536,9 @@ export default {
       if (data.result) {
         this.$refs.join.classList.add('confirm')
         this.confirm = true
+      } else {
+        alert('인증번호를 확인해주세요.')
+        this.$refs.btnNumConfirm.value = ''
       }
     },
     // ------------------- step03 -------------------
@@ -674,7 +696,9 @@ select {
     }
     .terms-list {
       li {
+        display: table;
         position: relative;
+        width: 100%;
         padding: 0 0 10px 30px;
         margin-top: 12px;
         border-bottom: 1px solid $inputColor;
@@ -688,6 +712,20 @@ select {
         }
         &:last-child {
           border-bottom: 0 none;
+        }
+        & > * {
+          display: table-cell;
+          vertical-align: middle;
+        }
+        & > div {
+          width: 78%;
+        }
+        & > button {
+          width: 100%;
+          background: $inputColor;
+          border-radius: 4px;
+          line-height: 24px;
+          color: $defaultColor;
         }
       }
     }
@@ -824,7 +862,7 @@ select {
         }
         &.step02 {
           &.confirm {
-            height: 72vh;
+            height: 66vh;
           }
           .step {
             left: -448px;

@@ -9,7 +9,7 @@
         <div class="step">
           <!-- Step01: 아이디 입력 -->
           <div>
-            <input type="text" placeholder="아이디" />
+            <input v-model="user.loginId" type="text" placeholder="아이디" />
             <n-link to="#" class="txt-forget">아이디를 잊으셨나요?</n-link>
             <div class="option">
               <n-link to="/join" class="setBtn setBtn02">계정 만들기</n-link>
@@ -19,12 +19,16 @@
           <!-- // Step01: 아이디 입력 -->
           <!-- Step02: 비밀번호 입력 -->
           <div>
-            <span class="txt-id">{{ loginId }}</span>
-            <input type="password" placeholder="비밀번호 입력" />
+            <span class="txt-id">{{ user.loginId }}</span>
+            <input
+              v-model="user.pwd"
+              type="password"
+              placeholder="비밀번호 입력"
+            />
             <n-link to="#" class="txt-forget">비밀번호를 잊으셨나요?</n-link>
             <div class="option">
               <button class="setBtn setBtn02" @click="goStep01">취소</button>
-              <button class="setBtn setBtn01">다음</button>
+              <button class="setBtn setBtn01" @click="login">다음</button>
             </div>
           </div>
           <!-- // Step02: 비밀번호 입력 -->
@@ -37,7 +41,12 @@
 export default {
   data() {
     return {
-      loginId: 'lasertank2'
+      user: {
+        // loginId: 'test1',
+        // pwd: '1111'
+        loginId: '',
+        pwd: ''
+      }
     }
   },
   methods: {
@@ -46,6 +55,15 @@ export default {
     },
     goStep02() {
       this.$refs.login.classList.add('step02')
+    },
+    async login() {
+      try {
+        await this.$store.dispatch('user/login', this.user)
+      } catch (e) {
+        alert('로그인 실패')
+        return false
+      }
+      this.$router.push('/')
     }
   }
 }
