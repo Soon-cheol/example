@@ -62,7 +62,7 @@ export default {
       & + label {
         .txt,
         svg {
-          color: $subActiveColor01;
+          color: $mainColor;
         }
       }
     }

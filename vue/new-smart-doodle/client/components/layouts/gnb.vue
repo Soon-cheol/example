@@ -20,13 +20,13 @@
     <div class="usermenu">
       <!-- <n-link to="/mew"><img src="~assets/images/login.png"/></n-link> -->
       <div class="usermenu-container">
-        <div v-if="!logined" class="label" @click="onUserMenu('login')">
+        <div v-if="!logined" class="label" @click="onMenu('login')">
           로그인
         </div>
-        <div v-if="!logined" class="label" @click="onUserMenu('join')">
+        <div v-if="!logined" class="label" @click="onMenu('join')">
           회원가입
         </div>
-        <div v-if="logined" class="label" @click="onUserMenu('logout')">
+        <div v-if="logined" class="label" @click="onMenu('logout')">
           로그아웃
         </div>
       </div>
@@ -43,19 +43,19 @@
           <div class="menuitemtitle" @click="modal_on = false">
             <img :src="'/images/' + logoImage" style="width:60%" />
           </div>
-          <div class="menuitem" @click="onMainMenu('mew')">
+          <div class="menuitem" @click="onMenu('mew')">
             Mew Nursery Rhymes
           </div>
-          <div class="menuitem" @click="onMainMenu('info-rounge')">
+          <div class="menuitem" @click="onMenu('info-rounge')">
             정보 라운지
           </div>
-          <div v-if="!logined" class="menuitem" @click="onUserMenu('login')">
+          <div v-if="!logined" class="menuitem" @click="onMenu('login')">
             로그인
           </div>
-          <div v-if="!logined" class="menuitem" @click="onUserMenu('login')">
+          <div v-if="!logined" class="menuitem" @click="onMenu('join')">
             회원가입
           </div>
-          <div v-if="logined" class="menuitem" @click="onUserMenu('logout')">
+          <div v-if="logined" class="menuitem" @click="onMenu('logout')">
             로그아웃
           </div>
         </div>
@@ -368,12 +368,8 @@ export default {
     })
   },
   methods: {
-    onMainMenu(v) {
-      this.$emit('onMainMenu', v)
-      this.modal_on = false
-    },
-    onUserMenu(v) {
-      this.$emit('onUserMenu', v)
+    onMenu(v) {
+      this.$emit('onMenu', v)
       this.modal_on = false
     }
   }

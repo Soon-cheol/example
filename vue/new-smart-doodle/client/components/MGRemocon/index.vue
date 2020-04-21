@@ -1,40 +1,32 @@
 <template>
-  <transition v-if="display" name="Remocon-display">
-    <div class="MGRemocon">
-      <div v-if="!logined" class="MGRemocon-login">
-        <div class="MGRemocon-body">
-          <img class="MGRemocon-logo" src="~/assets/images/logo_sdd.png" />
-          <div class="comment" style="padding-top: 4.3em;">
-            회원가입하여 <br />스마트두들의 컨텐츠를 즐기세요.
-          </div>
-          <div class="btn-group" style="padding-top:0.5em;">
-            <div class="btn" @click="active_toggle()">회원가입</div>
-            <div class="btn"><n-link to="/user/login">로그인</n-link></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </transition>
+  <div class="MGRemocon">
+    <transition name="slidein">
+      <LoginModule v-if="!logined" @onMenu="onMenu" />
+    </transition>
+    <MewExcutor v-if="logined" @onStartStudy="onStartStudy" />
+  </div>
 </template>
 
 <script>
+import LoginModule from './LoginModule'
+import MewExcutor from './MewExcutor'
+
 export default {
+  components: { LoginModule, MewExcutor },
   props: {
     logined: { type: Boolean, default: false }
   },
   data() {
-    return {
-      display: false,
-      mode: 'login'
-    }
+    return {}
   },
-  mounted() {
-    this.display = true
-  },
+  mounted() {},
   methods: {
-    active_toggle() {
-      console.log('active_toggle')
-      this.display = !this.display
+    onMenu(v) {
+      this.$emit('onMenu', v)
+      this.modal_on = false
+    },
+    onStartStudy(v) {
+      this.$emit('onStartStudy', v)
     }
   }
 }
@@ -52,77 +44,14 @@ $keyColor: rgb(240, 76, 84);
   position: fixed;
   bottom: 0;
   width: 100vw;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
-.MGRemocon-login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.MGRemocon-logo {
-  width: 100px;
-  position: absolute;
-  top: 10px;
-  z-index: 1000;
-}
-.MGRemocon-body {
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  min-height: 10em;
-  max-width: 90%;
-  border-top-left-radius: 9em;
-  border-top-right-radius: 9em;
-  box-shadow: 0em 0em 1em rgba(0, 0, 0, 0.2);
-  border: 0.4em solid rgb(240, 76, 84);
-  border-bottom: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.comment {
-  color: $keyColor;
-  font-family: 'Jeju Gothic';
-  font-weight: normal;
-}
-.btn-group {
-  display: flex;
-}
-.btn {
-  padding: 0.3em;
-  padding-left: 1em;
-  padding-right: 1em;
-  border-radius: 1em;
-  border: 0.2em solid rgb(241, 149, 153);
-  color: rgb(240, 76, 84);
-  font-family: 'NanumSquare';
-  font-weight: 800;
-  font-size: 1.3em;
-  /*
-  .normal		{ font-weight: 400 }
-  .bold		{ font-weight: 700 }
-  .bolder		{ font-weight: 800 }
-  .light		{ font-weight: 300 };
-  */
-}
-.btn:first-child {
-  margin-right: 0.3em;
-}
-.btn:hover {
-  background-color: $keyColor;
-  color: #fff;
-}
-
-.Remocon-display-enter-active,
-.Remocon-display-leave-active {
+.slidein-enter-active,
+.slidein-leave-active {
   transition: bottom 1.5s;
 }
-.Remocon-display-enter,
-.Remocon-display-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.slidein-enter,
+.slidein-leave-to /* .fade-leave-active below version 2.1.8 */ {
   bottom: -30em;
 }
 </style>

@@ -1,14 +1,21 @@
 <template>
   <div id="wrap">
-    <gnbComponent @onMainMenu="onMainMenu" @onUserMenu="onUserMenu" />
+    <gnbComponent :logined="logined" @onMenu="onMenu" />
     <div id="contants">
       <nuxt />
     </div>
+
     <transition name="modal">
-      <div v-if="loginModal" class="dimmed" @click="loginModal = false">
+      <div v-if="showLoginModal" class="dimmed" @click="showLoginModal = false">
         <loginComponent name="loginComponent" />
       </div>
     </transition>
+    <MGRemocon
+      :logined="logined"
+      @onMenu="onMenu"
+      @onStartStudy="onStartStudy"
+    />
+    <MewCanvas v-if="MGStudyOn" />
   </div>
 </template>
 
@@ -43,36 +50,39 @@
 <script>
 import gnbComponent from '~/components/layouts/gnb.vue'
 import loginComponent from '~/components/login.vue'
+import MGRemocon from '~/components/MGRemocon'
+import MewCanvas from '~/components/MewCanvas'
 
 export default {
   components: {
     gnbComponent,
-    loginComponent
+    loginComponent,
+    MGRemocon,
+    MewCanvas
   },
   data() {
     return {
-      loginModal: false
+      logined: false, // this.$store.state.auth.loggedIn,
+      showLoginModal: false,
+      MGStudyOn: false
     }
   },
-  beforeMount() {
-    // const _this = this
-    $('body').on('mousewheel', function(event) {
-      const wheel = event.originalEvent.wheelDelta
-      if (wheel > 0) {
-        // 스크롤 업
-        document.querySelector('#header').setAttribute('style', 'top:0')
-      } else if (wheel < 0) {
-        // 스크롤 다운
-        document.querySelector('#header').setAttribute('style', 'top:-200px')
-      }
-    })
-  },
   methods: {
-    onMainMenu(v) {},
-    onUserMenu(v) {
-      if (v === 'login') {
-        this.loginModal = true
+    onMenu(v) {
+      console.log('->onMenu:', v)
+      switch (v) {
+        case 'login':
+          this.logined = true
+          this.showLoginModal = true
+          break
+        case 'logout':
+          this.logined = false
+          break
       }
+    },
+    onStartStudy(v) {
+      console.log('->onStartStudy:', v)
+      this.MGStudyOn = true
     }
   }
 }

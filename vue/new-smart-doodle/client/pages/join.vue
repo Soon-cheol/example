@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="center" @click.stop>
-      <div ref="join" class="join ">
+      <div ref="join" class="join">
         <h1>
           <n-link to="/"><img src="~assets/images/logo_sdd.png"/></n-link>
         </h1>
@@ -18,49 +18,76 @@
               </li>
             </ul>
             <div class="option">
-              <button class="setBtn setBtn01" @click="goCancle">취소</button>
-              <button class="setBtn setBtn02" @click="goInfo">다음</button>
+              <button class="setBtn setBtn02" @click="goCancle">취소</button>
+              <button class="setBtn setBtn01" @click="goInfo">다음</button>
             </div>
           </div>
           <!-- // Step01: 약관동의 -->
           <div class="info">
-            <h2 class="txt-title">정보입력</h2>
-            <!-- Step02: 정보입력 -->
             <div v-if="!confirm">
-              <div class="input">
-                <input
-                  v-model="user.loginId"
-                  placeholder="아이디"
-                  type="text"
-                  minlength="4"
-                  maxlength="15"
-                  @input="idValidate"
-                />
-                <span class="tit" :class="{ active: idVal.bool }"
-                  >아이디 {{ idVal.text }}</span
+              <!-- Step02-1: 아이디 메일 중복체크 -->
+              <div v-if="!count">
+                <h2 class="txt-title">정보입력</h2>
+                <div class="input">
+                  <input
+                    v-model="user.loginId"
+                    placeholder="아이디"
+                    type="text"
+                    minlength="4"
+                    maxlength="15"
+                    @input="idValidate"
+                  />
+                  <span class="tit" :class="{ active: idVal.bool }"
+                    >아이디 {{ idVal.text }}</span
+                  >
+                </div>
+                <div class="input">
+                  <input
+                    v-model="user.memEmlNm"
+                    type="text"
+                    placeholder="이메일"
+                    @input="emailValidate"
+                  />
+                  <span class="tit" :class="{ active: emailVal.bool }"
+                    >이메일 {{ emailVal.text }}</span
+                  >
+                </div>
+                <button
+                  ref="btnConfirm"
+                  class="setBtn setBtn01 btn-confirm"
+                  disabled="disabled"
+                  @click="emailConfirm"
                 >
+                  인증하기
+                </button>
               </div>
-              <div class="input">
+              <!-- // Step02-1: 아이디 메일 중복체크 -->
+              <!-- Step02-2: 이메일 인증 -->
+              <div v-if="count" class="email-confirm">
+                <h2 class="txt-title">인증하기</h2>
+                <p class="txt-email">
+                  <span>{{ user.memEmlNm }}</span
+                  >로 발송된 인증번호를 10분 안에 입력해주세요.
+                </p>
+                <div class="txt-timer">{{ timer.min }}분 {{ timer.sec }}초</div>
                 <input
-                  v-model="user.memEmlNm"
+                  ref="numConfirm"
                   type="text"
-                  placeholder="이메일"
-                  @input="emailValidate"
+                  maxlength="6"
+                  minlength="6"
+                  @keyup="confirmNumber"
                 />
-                <span class="tit" :class="{ active: emailVal.bool }"
-                  >이메일 {{ emailVal.text }}</span
+                <button
+                  ref="btnNumConfirm"
+                  class="setBtn setBtn01 btn-confirm"
+                  disabled="disabled"
+                  @click="emailNumConfirm"
                 >
+                  다음
+                </button>
               </div>
-              <button
-                ref="btnConfirm"
-                class="setBtn setBtn01 btn-confirm"
-                disabled="disabled"
-                @click="emailConfirm"
-              >
-                인증하기
-              </button>
+              <!-- // Step02-2: 이메일 인증 -->
             </div>
-            <!-- // Step02: 정보입력 -->
             <!-- Step03: 정보입력 -->
             <div v-if="confirm">
               <div class="input">
@@ -176,14 +203,32 @@
               <button
                 ref="btnJoin"
                 class="setBtn setBtn01 btn-confirm"
-                @click="goJoin"
+                @click="signup"
               >
                 가입하기
               </button>
               <!-- // Step03: 정보입력 -->
             </div>
-            <button class="setBtn setBtn02" @click="goCancle">취소</button>
+            <button class="setBtn setBtn02" @click="goCancle">
+              회원가입 취소
+            </button>
           </div>
+          <!-- Step04: 가입 완료 -->
+          <div class="end">
+            <h2 class="txt-title">가입 완료</h2>
+            <p class="txt-welcome">
+              회원가입을 환영합니다.
+            </p>
+            <p class="txt-sub">
+              안녕하세요. <strong>{{ user.memNm }}</strong> 회원님! <br />
+              스마트 두들 회원이 되신 것을 축하 드립니다.<br />로그인 하신 후
+              다양한 콘텐츠와 함께 하세요.
+            </p>
+            <n-link to="/user" class="setBtn setBtn01 btn-login">
+              로그인 하기
+            </n-link>
+          </div>
+          <!-- // Step04: 가입 완료 -->
         </div>
       </div>
     </div>
@@ -206,6 +251,7 @@ export default {
     return {
       aNum: 0,
       confirm: false,
+      count: false,
       idVal: {
         bool: false,
         text: ''
@@ -213,6 +259,11 @@ export default {
       emailVal: {
         bool: false,
         text: ''
+      },
+      timer: {
+        total: 600,
+        min: 10,
+        sec: 0
       },
       pwdVal1: {
         pwd: '',
@@ -234,17 +285,17 @@ export default {
         bool: false
       },
       user: {
-        loginId: '', // 로그인_ID
+        loginId: 'lasertank', // 로그인_ID
         pwd: '', // 비밀번호
         memNm: '', // 회원_명
-        memEmlNm: '', // 이메일_주소_명
+        memEmlNm: 'sooncheolchoi7@gmail.com', // 이메일_주소_명
         mnoCd: '', // 통신사코드
         mblTelRcgnNo: '', // 휴대_전화_식별번호
         mblTelNatnNo: '', // 휴대_전화_국_번호
         mblTelSeqno: '', // 휴대_전화_일련번호
         trmsI: [], // 회원가입약관동의정보
         // 아래부터 현재 안 받는 정보
-        hgrkMemId: '', // 상위_로그인_ID
+        hgrkMemId: 'mini111', // 상위_로그인_ID
         memDivCd: 'G', // 회원_구분_코드
         acDivCd: 'R', // 계정_구분_코드
         brthDivCd: '', // 생일_구분_코드
@@ -319,6 +370,7 @@ export default {
           }
         }
         this.$refs.join.classList.add('step02')
+        this.$refs.join.classList.remove('step03')
       } else {
         alert('필수 약관에 모두 동의해주세요.')
       }
@@ -422,9 +474,50 @@ export default {
     },
     // 이메일 인증 진행
     emailConfirm() {
-      this.$refs.join.classList.add('confirm')
+      this.$axios.post('email/sendJoin', {
+        toemail: this.user.memEmlNm
+      })
+      this.count = true
+      this.sendEmail()
       // 인증 성공 시
-      this.confirm = true
+      // this.$refs.join.classList.add('confirm')
+      // this.confirm = true
+    },
+    // 인증 카운트 다운 스타트
+    sendEmail() {
+      const _this = this
+      setInterval(function() {
+        _this.timer.min = parseInt(_this.timer.total / 60)
+        _this.timer.sec = _this.timer.total % 60
+        _this.timer.total--
+        if (_this.timer.total <= 0) {
+          _this.$emit('closeCall')
+        }
+      }, 1000)
+    },
+    // 인증번호 숫자 체크
+    confirmNumber(e) {
+      const v = /^[0-9]+$/
+      if (!v.test(e.target.value)) {
+        e.target.value = ''
+      }
+      if (e.target.value.length === 6) {
+        this.$refs.btnNumConfirm.removeAttribute('disabled')
+      } else {
+        this.$refs.btnNumConfirm.setAttribute('disabled', 'disabled')
+      }
+    },
+    // 인증번호 확인
+    async emailNumConfirm() {
+      const { data } = await this.$axios.post('email/selsendcurrentdiff', {
+        toemail: this.user.memEmlNm,
+        currentCode: this.$refs.numConfirm.value
+      })
+      // console.log('data', data.result)
+      if (data.result) {
+        this.$refs.join.classList.add('confirm')
+        this.confirm = true
+      }
     },
     // ------------------- step03 -------------------
     // 비번 밸리 체크 후 -> 비번 확인 활성화
@@ -488,7 +581,7 @@ export default {
       }
     },
     // 가입하기
-    goJoin() {
+    async signup() {
       if (this.user.trmsI.length <= 0) {
         alert('가입을 다시 진행해주세요.')
         console.log('약관동의 오류')
@@ -529,7 +622,17 @@ export default {
         alert('전화번호를 입력해주세요.')
         return
       }
-      alert('회원가입이 완료 되었습니다.')
+      try {
+        const rs = await this.$store.dispatch('user/signup', this.user)
+        console.log('rs', rs)
+        if (rs) {
+          alert('회원가입이 완료 되었습니다.')
+          this.$refs.join.classList.add('step03')
+          this.$refs.join.classList.remove('step02')
+        }
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 }
@@ -537,7 +640,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/variable';
-$activeColor: #3bad00;
 h1 {
   img {
     width: 100px;
@@ -603,7 +705,7 @@ select {
         color: $subActiveColor01;
         z-index: 1;
         &.active {
-          color: $activeColor;
+          color: $greenColor;
         }
       }
       & + .input {
@@ -625,10 +727,48 @@ select {
         padding: 14px 6px 0;
       }
     }
+    .email-confirm {
+      font-size: 16px;
+      .txt-email {
+        line-height: 22px;
+        span {
+          font-weight: 600;
+          color: $greenColor;
+        }
+      }
+      .txt-timer {
+        overflow: hidden;
+        padding: 10px;
+        margin-top: 10px;
+        background: #eaeaea;
+        border-radius: 4px;
+        font-size: 20px;
+      }
+      input[type='text'] {
+        text-align: center;
+      }
+    }
     button {
       width: 100%;
       margin: 10px 0;
       padding: 14px 20px;
+    }
+  }
+  .end {
+    .txt-welcome {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: $subActiveColor01;
+    }
+    .txt-sub {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 28px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
     }
   }
   .option {
@@ -665,18 +805,20 @@ select {
         -webkit-transition: height 0.4s;
         .step {
           position: absolute;
-          width: 800px;
           left: 0;
+          width: 1260px;
           transition: left 0.4s;
           -webkit-transition: left 0.4s;
           & > div {
             float: left;
             width: 348px;
             & + div {
+              margin-left: 100px;
+            }
+            &:nth-child(2) {
               overflow-y: auto;
               height: 100%;
               max-height: 64vh;
-              margin-left: 100px;
             }
           }
         }
@@ -686,6 +828,11 @@ select {
           }
           .step {
             left: -448px;
+          }
+        }
+        &.step03 {
+          .step {
+            left: -896px;
           }
         }
       }
@@ -704,16 +851,29 @@ select {
           & > div:first-child {
             display: block;
           }
-          & > div:last-child {
+          & > div:nth-child(2),
+          & > div:nth-child(3) {
             display: none;
           }
         }
         &.step02 {
           .step {
-            & > div:first-child {
+            & > div:first-child,
+            & > div:nth-child(3) {
               display: none;
             }
-            & > div:last-child {
+            & > div:nth-child(2) {
+              display: block;
+            }
+          }
+        }
+        &.step03 {
+          .step {
+            & > div:first-child,
+            & > div:nth-child(2) {
+              display: none;
+            }
+            & > div:nth-child(3) {
               display: block;
             }
           }

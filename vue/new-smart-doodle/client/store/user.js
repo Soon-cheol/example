@@ -38,5 +38,16 @@ export const actions = {
       console.log('err', e)
       return e
     }
+  },
+  // 회원가입
+  async signup({ commit }, user) {
+    console.log('user', user)
+    try {
+      const data = await this.$axios.post('member/join', user)
+      return data
+    } catch (e) {
+      // console.log("err", e);
+      return e
+    }
   }
 }
