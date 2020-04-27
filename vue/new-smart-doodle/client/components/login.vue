@@ -100,6 +100,7 @@ input[type='password'] {
     .txt-title {
       margin-top: 16px;
       font-size: 26px;
+      font-weight: 400;
     }
     .txt-forget {
       display: block;

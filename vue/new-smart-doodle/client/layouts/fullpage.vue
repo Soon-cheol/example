@@ -6,16 +6,26 @@
     </div>
 
     <transition name="modal">
-      <div v-if="showLoginModal" class="dimmed" @click="showLoginModal = false">
+      <div
+        v-if="canShowLoginModal"
+        class="dimmed"
+        @click="showLoginModal = false"
+      >
         <loginComponent name="loginComponent" />
       </div>
     </transition>
     <MGRemocon
       :logined="logined"
+      :music-list="musicList"
       @onMenu="onMenu"
       @onStartStudy="onStartStudy"
     />
-    <MewCanvas v-if="MGStudyOn" />
+    <MewCanvas
+      v-if="MGStudyOn"
+      :pid="productID"
+      :music-list="musicList"
+      @close="MGStudyOn = false"
+    />
   </div>
 </template>
 
@@ -32,13 +42,13 @@
   align-items: center;
 }
 .modal-enter-active {
-  animation: bounce-in 1s;
+  animation: fade-in 0.2s;
 }
 .modal-leave-active {
-  animation: bounce-in 0.5s reverse;
+  animation: fade-in 0.2s reverse;
 }
 
-@keyframes bounce-in {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -48,6 +58,7 @@
 }
 </style>
 <script>
+import { mapState } from 'vuex'
 import gnbComponent from '~/components/layouts/gnb.vue'
 import loginComponent from '~/components/login.vue'
 import MGRemocon from '~/components/MGRemocon'
@@ -62,26 +73,56 @@ export default {
   },
   data() {
     return {
-      logined: false, // this.$store.state.auth.loggedIn,
       showLoginModal: false,
-      MGStudyOn: false
+      MGStudyOn: false,
+      productID: ''
     }
+  },
+  computed: {
+    canShowLoginModal() {
+      if (this.showLoginModal) {
+        if (!this.logined) return true
+        else return false
+      } else {
+        return false
+      }
+    },
+
+    logined() {
+      return this.$store.state.auth.loggedIn
+    },
+    ...mapState({
+      musicList: (state) => state.lectures.musicList
+    })
+  },
+  created() {
+    if (this.musicList.length === 0 && this.logined) {
+      this.$store.dispatch('lectures/getMusicList')
+    }
+  },
+  mounted() {
+    // console.log('->musicList:', this.musicList)
   },
   methods: {
     onMenu(v) {
       console.log('->onMenu:', v)
       switch (v) {
         case 'login':
-          this.logined = true
           this.showLoginModal = true
           break
         case 'logout':
-          this.logined = false
+          this.$store.dispatch('user/logout')
+          break
+        case 'mew':
+          this.$router.push('/')
+          break
+        case 'info-rounge':
+          this.$router.push('/rounge')
           break
       }
     },
-    onStartStudy(v) {
-      console.log('->onStartStudy:', v)
+    onStartStudy(prodID) {
+      this.productID = prodID
       this.MGStudyOn = true
     }
   }

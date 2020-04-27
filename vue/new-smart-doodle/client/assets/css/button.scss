@@ -33,3 +33,12 @@
     color: $whiteColor;
   }
 }
+.setBtn03 {
+  // 초록색
+  background: $subColor02;
+  color: $whiteColor;
+  &:hover {
+    background: $subActiveColor02;
+    color: $whiteColor;
+  }
+}

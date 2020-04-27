@@ -4,56 +4,22 @@
       <div v-if="display" class="exe-container">
         <div class="studyitem-group">
           <img
-            src="/images/main_title_01.png"
+            v-for="item of itemlist.slice(0, 5)"
+            :key="item.idx"
+            :src="item.img"
             class="studyitem"
-            @click="onStartStudy(1)"
-          />
-          <img
-            src="/images/main_title_02.png"
-            class="studyitem"
-            @click="onStartStudy(2)"
-          />
-          <img
-            src="/images/main_title_03.png"
-            class="studyitem"
-            @click="onStartStudy(3)"
-          />
-          <img
-            src="/images/main_title_04.png"
-            class="studyitem"
-            @click="onStartStudy(4)"
-          />
-          <img
-            src="/images/main_title_05.png"
-            class="studyitem"
-            @click="onStartStudy(5)"
+            :style="{ opacity: item.active ? 1 : 0.3 }"
+            @click="onStartStudy(item.idx)"
           />
         </div>
         <div class="studyitem-group">
           <img
-            src="/images/main_title_06.png"
+            v-for="item of itemlist.slice(5, 10)"
+            :key="item.idx"
+            :src="item.img"
             class="studyitem"
-            @click="onStartStudy(6)"
-          />
-          <img
-            src="/images/main_title_07.png"
-            class="studyitem"
-            @click="onStartStudy(7)"
-          />
-          <img
-            src="/images/main_title_08.png"
-            class="studyitem"
-            @click="onStartStudy(8)"
-          />
-          <img
-            src="/images/main_title_09.png"
-            class="studyitem"
-            @click="onStartStudy(9)"
-          />
-          <img
-            src="/images/main_title_10.png"
-            class="studyitem"
-            @click="onStartStudy(10)"
+            :style="{ opacity: item.active ? 1 : 0.3 }"
+            @click="onStartStudy(item.idx)"
           />
         </div>
       </div>
@@ -67,9 +33,28 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+const imglist = [
+  '/images/main_title_01.png',
+  '/images/main_title_02.png',
+  '/images/main_title_03.png',
+  '/images/main_title_04.png',
+  '/images/main_title_05.png',
+  '/images/main_title_06.png',
+  '/images/main_title_07.png',
+  '/images/main_title_08.png',
+  '/images/main_title_09.png',
+  '/images/main_title_10.png'
+]
 export default {
   props: {
     studyList: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    musicList: {
       type: Array,
       default() {
         return []
@@ -78,18 +63,33 @@ export default {
   },
   data() {
     return {
-      display: false
+      display: false,
+      itemlist: []
     }
   },
-  mounted() {},
+  mounted() {
+    // console.log(this.musicList)
+  },
   methods: {
     toggle() {
       this.display = !this.display
+
       if (this.display) {
+        for (let i = 0; i < this.musicList.length; i++) {
+          // console.log('=>', this.musicList[i])
+          this.itemlist[i] = {
+            idx: i + 1,
+            img: imglist[i],
+            active: this.musicList[i].myLrngIsuse === '1',
+            productID: this.musicList[i].prodId
+          }
+        }
       }
     },
     onStartStudy(v) {
-      this.$emit('onStartStudy', v)
+      if (this.itemlist[v - 1].active === true) {
+        this.$emit('onStartStudy', this.itemlist[v - 1].productID)
+      }
     }
   }
 }
@@ -97,7 +97,20 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/css/variable';
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+/* @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css); */
+/* @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css); */
+
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/JejuGothic-Regular.eot);
+  src: url(/font/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+    url(/font/JejuGothic-Regular.woff2) format('woff2'),
+    url(/font/JejuGothic-Regular.woff) format('woff'),
+    url(/font/JejuGothic-Regular.ttf) format('truetype');
+}
 
 $keyColor: rgb(240, 76, 84);
 .excutor {

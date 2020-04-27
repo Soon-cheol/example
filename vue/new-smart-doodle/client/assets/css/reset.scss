@@ -73,7 +73,18 @@
     url(~assets/fonts/NanumSquareRound/NanumSquareRoundL.ttf) format('truetype');
 }
 
-$mainFont: 'NanumSquareRound';
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/JejuGothic-Regular.eot);
+  src: url(/font/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+    url(/font/JejuGothic-Regular.woff2) format('woff2'),
+    url(/font/JejuGothic-Regular.woff) format('woff'),
+    url(/font/JejuGothic-Regular.ttf) format('truetype');
+}
+
+$mainFont: 'Jeju Gothic';
 
 html {
   font-size: 10px;
@@ -152,7 +163,6 @@ table {
 //   clip: rect(0, 0, 0, 0);
 //   border: 0;
 // }
-
 select,
 input,
 textarea {
@@ -162,7 +172,11 @@ textarea {
   font-size: 1.6rem;
   font-family: $mainFont;
 }
-
+select {
+  padding: 8px 40px 8px 10px;
+  background: url(/images/triangle.png) no-repeat 92% 48%;
+  background-size: 12px;
+}
 select,
 input {
   vertical-align: middle;
@@ -231,6 +245,9 @@ input[type='submit'] {
   -moz-appearance: none;
   appearance: none;
 }
+textarea {
+  line-height: 20px;
+}
 
 header,
 footer,
@@ -252,4 +269,8 @@ input {
 
 .hidden {
   display: none !important;
+}
+
+.no-resize {
+  resize: none;
 }

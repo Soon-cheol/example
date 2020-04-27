@@ -1,17 +1,17 @@
 <template>
   <div ref="gnb" class="container">
     <h1>
-      <img :src="'/images/' + logoImage" @click="$emit('onMainMenu', 'mew')" />
+      <img :src="'/images/' + logoImage" @click="$emit('onMenu', 'mew')" />
     </h1>
 
     <div class="mainmenu">
-      <div class="mew" @click="$emit('onMainMenu', 'mew')">
+      <div class="mew" @click="$emit('onMenu', 'mew')">
         <span>MEW</span><span style="font-size:0.8em">Nursery Rhymes</span>
       </div>
       <div
         class="mew"
         style="line-height: 1.2em"
-        @click="$emit('onMainMenu', 'info-rounge')"
+        @click="$emit('onMenu', 'info-rounge')"
       >
         <span>정보</span><span>라운지</span>
       </div>
@@ -66,7 +66,18 @@
 
 <style lang="scss" scoped>
 @import '~/assets/css/variable';
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+/* @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css); */
+
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/JejuGothic-Regular.eot);
+  src: url(/font/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+    url(/font/JejuGothic-Regular.woff2) format('woff2'),
+    url(/font/JejuGothic-Regular.woff) format('woff'),
+    url(/font/JejuGothic-Regular.ttf) format('truetype');
+}
 $keyColor: rgb(240, 76, 84);
 
 .container {
@@ -369,8 +380,12 @@ export default {
   },
   methods: {
     onMenu(v) {
-      this.$emit('onMenu', v)
-      this.modal_on = false
+      if (v === 'join') {
+        this.$router.push('/join')
+      } else {
+        this.$emit('onMenu', v)
+        this.modal_on = false
+      }
     }
   }
 }

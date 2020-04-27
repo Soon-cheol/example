@@ -3,9 +3,13 @@
     <client-only>
       <full-page id="fullpage" ref="fullpage" :options="options">
         <div class="section">
-          노래로 배우는 영어<br />
-          놀이로 배우는 영어<br />
-          NEW 특징과 장점
+          <MewIntro01 />
+        </div>
+        <div class="section">
+          <MewIntro02 />
+        </div>
+        <div class="section">
+          <MewIntro03 />
         </div>
         <div class="section">
           아동 발달에 알맞은 다중지능 + 누리과정 연계 프로그램<br /><br />
@@ -39,26 +43,35 @@
 </template>
 
 <script>
+import MewIntro01 from './mew_introduce/intro01'
+import MewIntro02 from './mew_introduce/intro02'
+import MewIntro03 from './mew_introduce/intro03'
+
 import footerComponent from '~/components/layouts/footer.vue'
+
 export default {
   layout: 'fullpage',
   components: {
-    footerComponent
+    footerComponent,
+
+    MewIntro01,
+    MewIntro02,
+    MewIntro03
   },
   data() {
     return {
       options: {
         menu: '#menu',
         anchors: ['page1', 'page2', 'page3'],
-        afterLoad: this.afterLoad,
-        sectionsColor: ['#41b883', '#ff5f45', '#0798ec']
+        afterLoad: this.afterLoad
+        // sectionsColor: ['#FFF', '#FFF', '#FFF']
       }
     }
   },
   mounted() {},
   methods: {
     afterLoad() {
-      console.log("Emitted 'after load' event.")
+      // console.log("Emitted 'after load' event.")
     }
   }
 }

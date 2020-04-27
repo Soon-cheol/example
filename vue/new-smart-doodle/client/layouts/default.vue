@@ -42,7 +42,7 @@ export default {
 #wrap {
   #contants {
     width: 100%;
-    margin-top: 150px;
+    margin-top: 120px;
     text-align: center;
     .container {
       width: 100%;

@@ -32,8 +32,19 @@ export default {
 <style lang="scss" scoped>
 @import '~/assets/css/variable';
 
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+/* @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css); */
+/* @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css); */
+
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/JejuGothic-Regular.eot);
+  src: url(/font/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+    url(/font/JejuGothic-Regular.woff2) format('woff2'),
+    url(/font/JejuGothic-Regular.woff) format('woff'),
+    url(/font/JejuGothic-Regular.ttf) format('truetype');
+}
 
 $keyColor: rgb(240, 76, 84);
 
@@ -74,6 +85,9 @@ $keyColor: rgb(240, 76, 84);
 
 .btn-group {
   display: flex;
+  .btn {
+    cursor: pointer;
+  }
 }
 
 .btn {

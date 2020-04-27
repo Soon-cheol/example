@@ -671,7 +671,7 @@ input[type='text'],
 input[type='password'],
 select {
   width: 100%;
-  background: #fff;
+  background-color: #fff;
   margin-top: 14px;
   border: 2px solid $inputColor;
   font-size: 16px;
@@ -688,6 +688,7 @@ select {
   .txt-title {
     margin: 16px 0;
     font-size: 26px;
+    font-weight: 400;
   }
   .terms {
     .txt-all-check {
@@ -770,7 +771,7 @@ select {
       .txt-email {
         line-height: 22px;
         span {
-          font-weight: 600;
+          font-weight: 400;
           color: $greenColor;
         }
       }
@@ -838,7 +839,7 @@ select {
       .join {
         overflow: hidden;
         position: relative;
-        height: 500px;
+        height: 508px;
         transition: height 0.4s;
         -webkit-transition: height 0.4s;
         .step {
